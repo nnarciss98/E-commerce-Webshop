@@ -24,7 +24,6 @@ public class ReviewController {
         return ResponseEntity.ok(createdReview);
     }
 
-    // Get all reviews for product
     @GetMapping("/product/{id}")
     public ResponseEntity<List<ReviewDTO>> getAllReviews(@PathVariable UUID productId) {
         List<ReviewDTO> reviews = reviewService.getReviewsByProduct(productId);

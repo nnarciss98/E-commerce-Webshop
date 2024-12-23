@@ -1,9 +1,7 @@
 package be.codecraft.webshop.datamodel.model.dto;
 
-import be.codecraft.webshop.controller.securityJWT.model.User;
 import be.codecraft.webshop.datamodel.model.OrderItem;
 import be.codecraft.webshop.datamodel.model.OrderStatus;
-import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;

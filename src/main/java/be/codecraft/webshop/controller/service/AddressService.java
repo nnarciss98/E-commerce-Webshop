@@ -1,7 +1,5 @@
 package be.codecraft.webshop.controller.service;
 
-import be.codecraft.webshop.controller.securityJWT.model.User;
-import be.codecraft.webshop.controller.securityJWT.model.UserRepository;
 import be.codecraft.webshop.datamodel.model.Address;
 import be.codecraft.webshop.datamodel.model.AddressDetails;
 import be.codecraft.webshop.datamodel.model.dto.AddressDTO;
@@ -15,12 +13,10 @@ import java.util.UUID;
 public class AddressService {
 
     private final AddressRepository addressRepository;
-    private final UserRepository userRepository;
     private final EntityMapper entityMapper;
 
-    public AddressService(AddressRepository addressRepository, UserRepository userRepository, EntityMapper entityMapper) {
+    public AddressService(AddressRepository addressRepository, EntityMapper entityMapper) {
         this.addressRepository = addressRepository;
-        this.userRepository = userRepository;
         this.entityMapper = entityMapper;
     }
 

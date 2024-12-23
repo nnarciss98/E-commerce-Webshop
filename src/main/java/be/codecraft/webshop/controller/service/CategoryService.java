@@ -102,7 +102,6 @@ public class CategoryService {
                 .toList();
     }
 
-    // Get category hierarchy (optional)
     @Transactional
     public CategoryDTO getCategoryHierarchy(UUID categoryId) {
         Category category = categoryRepository.findById(categoryId)

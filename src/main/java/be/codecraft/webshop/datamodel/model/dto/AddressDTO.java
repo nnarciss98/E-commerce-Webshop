@@ -1,6 +1,5 @@
 package be.codecraft.webshop.datamodel.model.dto;
 
-import be.codecraft.webshop.controller.securityJWT.model.User;
 import lombok.*;
 
 import java.util.UUID;

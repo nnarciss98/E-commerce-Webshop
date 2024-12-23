@@ -42,7 +42,6 @@ public class CartService {
         Product product = productRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("Product not found: " + productId));
 
-        // Find or create a new CartItem
         CartItem cartItem = cart.getItems().stream()
                 .filter(item -> item.getProductId().equals(productId))
                 .findFirst()
@@ -55,7 +54,6 @@ public class CartService {
             cart.getItems().add(cartItem);
         }
 
-        // Update the quantity and price
         cartItem.setQuantity(cartItem.getQuantity() + quantity);
         cartItem.setPrice(product.getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity())));
 

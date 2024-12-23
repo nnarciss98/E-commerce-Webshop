@@ -1,7 +1,5 @@
 package be.codecraft.webshop.datamodel.model.dto;
 
-import be.codecraft.webshop.controller.securityJWT.model.User;
-import be.codecraft.webshop.datamodel.model.Product;
 import lombok.*;
 
 import java.util.Date;
