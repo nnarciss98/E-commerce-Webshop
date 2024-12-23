@@ -1,6 +1,7 @@
 package be.codecraft.webshop.controller.securityJWT.model;
 
 import be.codecraft.webshop.datamodel.model.Address;
+import be.codecraft.webshop.datamodel.model.Order;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,8 +35,10 @@ public class User implements UserDetails {
     private String password;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true) // One-to-Many relationship
     private List<Address> addresses = new ArrayList<>();
+    @OneToMany
+    private List<Order> orders = new ArrayList<>();
 
-    @Temporal(TemporalType.TIMESTAMP) // Showcase temporal types
+    @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt = new Date();
 
     @Temporal(TemporalType.TIMESTAMP)

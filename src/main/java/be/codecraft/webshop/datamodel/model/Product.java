@@ -33,10 +33,10 @@ public class Product {
     private BigDecimal price;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "category_id")
     private Category category;
 
-    private Integer stock;
+    private Integer stockQuantity;
 
     @ElementCollection
     @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))

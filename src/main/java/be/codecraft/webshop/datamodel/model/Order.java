@@ -24,8 +24,8 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", unique = true)
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
