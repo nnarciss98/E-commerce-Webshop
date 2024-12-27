@@ -77,7 +77,7 @@ public class CartService {
     }
 
     @Transactional
-    public CartDTO clearCart(String userEmail) {
+    public void clearCart(String userEmail) {
         Cart cart = cartRepository.findByUserEmail(userEmail)
                 .orElseThrow(() -> new IllegalArgumentException("Cart not found for user id: " + userEmail));
 
@@ -85,7 +85,6 @@ public class CartService {
         cart.setTotalPrice(BigDecimal.ZERO);
 
         cartRepository.save(cart);
-        return entityMapper.convertCartToDTO(cart);
     }
 
     private void calculateCartTotal(Cart cart) {
@@ -99,7 +98,10 @@ public class CartService {
         Cart cart = new Cart();
         cart.setItems(new ArrayList<>());
         cart.setTotalPrice(BigDecimal.ZERO);
-        userRepository.findByEmail(userEmail).ifPresent(cart::setUser);
+        userRepository.findByEmail(userEmail).ifPresent(user -> {
+            user.setCart(cart);
+            cart.setUser(user);
+        });
         return cartRepository.save(cart);
     }
 
