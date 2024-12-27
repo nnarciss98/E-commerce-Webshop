@@ -1,6 +1,7 @@
 package be.codecraft.webshop.controller.securityJWT.model;
 
 import be.codecraft.webshop.datamodel.model.Address;
+import be.codecraft.webshop.datamodel.model.Cart;
 import be.codecraft.webshop.datamodel.model.Order;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -37,6 +38,8 @@ public class User implements UserDetails {
     private List<Address> addresses = new ArrayList<>();
     @OneToMany
     private List<Order> orders = new ArrayList<>();
+    @OneToOne
+    private Cart cart;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt = new Date();
