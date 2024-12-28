@@ -21,7 +21,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <!-- Navbar Links -->
-      <ul class="navbar-nav me-auto mb-2 mb-md-0 gap-1">
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item px-3">
           <a class="nav-link active" routerLink="/">Home</a>
         </li>
@@ -39,10 +39,26 @@
         </li>
       </ul>
 
+      <form class="d-flex mt-3 mt-lg-0 me-auto position-relative" role="search">
+        <input
+          class="form-control me-2 pe-5 border border-1 bg-light text-dark"
+          type="search"
+          placeholder="Chercher un produit, une réference, une marque,.."
+          aria-label="Search"
+          data-np-intersection-state="visible"
+        />
+        <button
+          class="btn btn-success position-absolute end-0 top-50 translate-middle-y me-2"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+
       <!-- Buttons (Added Inside Collapse) -->
       <div class="d-flex gap-3 mt-3 mt-md-0">
         <button
-          class="btn btn-light rounded-pill px-3 border border-1 nav-btn"
+          class="btn btn-light px-3 border border-1 nav-btn"
           type="button"
         >
           <a class="nav-link active" routerLink="/">Devenez client</a>
