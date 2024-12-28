@@ -1,0 +1,8 @@
+<div class="view-toggle product-categories-wrapper">
+  <div class="categories-grid">
+    <div class="category-tile" *ngFor="let category of categories">
+      <img [src]="category.imageUrl" alt="{{ category.title }}" class="category-image">
+      <h3 class="category-title">{{ category.title }}</h3>
+    </div>
+  </div>
+</div>
