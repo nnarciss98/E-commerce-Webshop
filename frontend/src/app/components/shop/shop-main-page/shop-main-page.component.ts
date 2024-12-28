@@ -4,15 +4,18 @@ import { ShopHeroBannerComponent } from '../shop-hero-banner/shop-hero-banner.co
 import { ShopProductCategoriesComponent } from '../shop-product-categories/shop-product-categories.component';
 import { ShopFeaturedProductsComponent } from '../shop-featured-products/shop-featured-products.component';
 import { ShopCustomersTestimonialsComponent } from '../shop-customers-testimonials/shop-customers-testimonials.component';
-import { ShopNewsletterComponent } from '../shop-newsletter/shop-newsletter.component';
 
 @Component({
   selector: 'shop-main-page',
   standalone: true,
-  imports: [CommonModule, ShopNewsletterComponent, ShopCustomersTestimonialsComponent, ShopFeaturedProductsComponent, ShopProductCategoriesComponent, ShopHeroBannerComponent],
+  imports: [
+    CommonModule,
+    ShopCustomersTestimonialsComponent,
+    ShopFeaturedProductsComponent,
+    ShopProductCategoriesComponent,
+    ShopHeroBannerComponent,
+  ],
   templateUrl: './shop-main-page.component.html',
-  styleUrl: './shop-main-page.component.css'
+  styleUrl: './shop-main-page.component.css',
 })
-export class ShopMainPageComponent {
-
-}
+export class ShopMainPageComponent {}

@@ -1,37 +1,122 @@
-<footer class="footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3>Shop</h3>
-        <ul>
-          <li><a routerLink="/">Home</a></li>
-          <li><a routerLink="/shop">Shop</a></li>
-          <li><a routerLink="/">Best Sellers</a></li>
-          <li><a routerLink="/">New Arrivals</a></li>
-          <li><a routerLink="/">Sale</a></li>
+<div class="bg-body-secondary pt-5">
+  <footer class="container">
+    <div class="row">
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Company</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-body-secondary" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-body-secondary" routerLink="/about-us"
+              >About</a
+            >
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-body-secondary" routerLink="/projects"
+              >Projects</a
+            >
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-body-secondary" routerLink="/contact"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item mb-2">
+            <a class="nav-link p-0 text-body-secondary" routerLink="/shop"
+              >Shop</a
+            >
+          </li>
         </ul>
       </div>
-      <div class="footer-section">
-        <h3>Customer Service</h3>
-        <ul>
-          <li><a routerLink="/contact">Contact Us</a></li>
-          <li><a routerLink="/">Returns</a></li>
-          <li><a routerLink="/">FAQs</a></li>
-          <li><a routerLink="/">Shipping Info</a></li>
-          <li><a routerLink="/">Privacy Policy</a></li>
+
+      <div class="col-6 col-md-2 mb-3">
+        <h5>Customer Service</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <a routerLink="/contact" class="nav-link p-0 text-body-secondary"
+              >Contact Us</a
+            >
+          </li>
+          <li class="nav-item mb-2">
+            <a routerLink="/features" class="nav-link p-0 text-body-secondary"
+              >Returns</a
+            >
+          </li>
+          <li class="nav-item mb-2">
+            <a routerLink="/pricing" class="nav-link p-0 text-body-secondary"
+              >FAQs</a
+            >
+          </li>
+          <li class="nav-item mb-2">
+            <a routerLink="/faqs" class="nav-link p-0 text-body-secondary"
+              >Shipping Info</a
+            >
+          </li>
+          <li class="nav-item mb-2">
+            <a routerLink="/about" class="nav-link p-0 text-body-secondary"
+              >Privacy Policy</a
+            >
+          </li>
         </ul>
       </div>
-      <div class="footer-section">
-        <h3>Follow Us</h3>
-        <ul class="social-links">
-          <li><a routerLink="/" class="social-link">Facebook</a></li>
-          <li><a routerLink="/" class="social-link">Instagram</a></li>
-          <li><a routerLink="/" class="social-link">Twitter</a></li>
-          <li><a routerLink="/" class="social-link">LinkedIn</a></li>
-        </ul>
+
+      <div class="col-md-5 offset-md-1 mb-3">
+        <form>
+          <h5>Subscribe to our newsletter</h5>
+          <p>Monthly digest of what's new and exciting from us.</p>
+          <div class="d-flex flex-column flex-sm-row w-100 gap-2">
+            <label for="newsletter1" class="visually-hidden"
+              >Email address</label
+            >
+            <input
+              id="newsletter1"
+              type="email"
+              class="form-control"
+              placeholder="Email address"
+            />
+            <button class="btn btn-primary" type="button">Subscribe</button>
+          </div>
+        </form>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024 YourShop. All rights reserved.</p>
+
+    <div
+      class="d-flex flex-column flex-sm-row justify-content-between py-4 border-top"
+    >
+      <p>© 2024 Matis-Onis SRL, All rights reserved.</p>
+      <ul class="list-unstyled d-flex">
+        <li class="ms-3">
+          <a
+            class="link-body-emphasis"
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="../../../assets/images/facebook(1).png" alt="Facebook" />
+          </a>
+        </li>
+        <li class="ms-3">
+          <a
+            class="link-body-emphasis"
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="../../../assets/images/instagram.png" alt="Instagram" />
+          </a>
+        </li>
+        <li class="ms-3">
+          <a
+            class="link-body-emphasis"
+            href="https://www.twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="../../../assets/images/twitter.png" alt="Twitter" />
+          </a>
+        </li>
+      </ul>
     </div>
   </footer>
-  
+</div>
