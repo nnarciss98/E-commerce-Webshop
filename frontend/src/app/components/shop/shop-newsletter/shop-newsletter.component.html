@@ -1,0 +1,11 @@
+<section class="newsletter-subscription">
+    <h2>Subscribe to Our Newsletter</h2>
+    <p>Get the latest updates on new arrivals, special offers, and more.</p>
+    <form (ngSubmit)="onSubscribe()" #newsletterForm="ngForm">
+      <div class="form-group">
+        <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="Enter your email" required>
+      </div>
+      <button type="submit" [disabled]="!newsletterForm.form.valid">Subscribe</button>
+    </form>
+  </section>
+  

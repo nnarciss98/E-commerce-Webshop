@@ -5,6 +5,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { PromoComponent } from './components/promo/promo.component';
 import { ProjectsComponent } from './components/projects/projects.component';
 import { ShopMainPageComponent } from './components/shop/shop-main-page/shop-main-page.component';
+import { ShopProductDetailPageComponent } from './components/shop/shop-product-detail-page/shop-product-detail-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,4 +14,5 @@ export const routes: Routes = [
   { path: 'promo', component: PromoComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'shop', component: ShopMainPageComponent },
+  { path: 'product/:id', component: ShopProductDetailPageComponent },
 ];
