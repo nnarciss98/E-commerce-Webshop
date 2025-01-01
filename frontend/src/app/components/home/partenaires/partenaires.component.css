@@ -1,3 +1,42 @@
 div {
   background-color: #ff9400;
 }
+.partner-carousel {
+  width: 100%; /* Full width of the carousel */
+  position: relative;
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.scroll-wrapper {
+  width: 100%; /* Full width for the wrapper */
+}
+
+.scroll-content {
+  display: flex; /* Flex layout for horizontal alignment */
+  flex-wrap: nowrap; /* Prevent wrapping */
+  animation: infinite-scroll linear infinite; /* Infinite scrolling animation */
+}
+
+.logo {
+  width: 150px; /* Fixed width for logo containers */
+  height: 120px; /* Fixed height for square containers */
+  flex: 0 0 auto; /* Prevent flex-shrink and flex-grow */
+}
+
+.logo img {
+  width: 100%; /* Responsive width for images */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure the image fits inside the container */
+}
+
+/* Animation for smooth infinite scroll */
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0); /* Start at original position */
+  }
+  100% {
+    transform: translateX(
+      -50%
+    ); /* Scroll half the width to create a seamless loop */
+  }
+}

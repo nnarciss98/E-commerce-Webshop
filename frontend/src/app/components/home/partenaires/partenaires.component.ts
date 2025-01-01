@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { url } from 'inspector';
 
 @Component({
   selector: 'app-partenaires',
@@ -9,7 +8,7 @@ import { url } from 'inspector';
   templateUrl: './partenaires.component.html',
   styleUrls: ['./partenaires.component.css'],
 })
-export class PartenairesComponent {
+export class PartenairesComponent implements AfterViewInit {
   logos = [
     {
       id: 1,
@@ -39,20 +38,27 @@ export class PartenairesComponent {
       id: 7,
       url: 'https://upload.wikimedia.org/wikipedia/commons/f/f8/Logo_SMA.svg',
     },
-    { id: 8, svg: 'path-to-logo-8' },
-    { id: 9, svg: 'path-to-logo-9' },
   ];
 
-  chunkedLogos: any[][] = [];
-  chunkSize = 6; // Nombre d'éléments à afficher par diapositive
+  duplicatedLogos: any[] = [];
 
-  constructor() {
-    this.chunkLogos();
+  @ViewChild('scrollContent') scrollContent!: ElementRef;
+
+  ngOnInit() {
+    this.generateDuplicatedLogos();
   }
 
-  chunkLogos() {
-    for (let i = 0; i < this.logos.length; i += this.chunkSize) {
-      this.chunkedLogos.push(this.logos.slice(i, i + this.chunkSize));
-    }
+  ngAfterViewInit() {
+    const scrollContent = this.scrollContent.nativeElement;
+
+    // Calculăm durata animației pe baza dimensiunii conținutului
+    const contentWidth = scrollContent.offsetWidth; // Lățimea întregului container
+    const duration = contentWidth / 50; // Viteza: cu cât numărul este mai mic, cu atât mai rapidă
+    scrollContent.style.animationDuration = `${duration}s`;
+  }
+
+  generateDuplicatedLogos() {
+    // Creăm un efect infinit prin duplicarea logo-urilor
+    this.duplicatedLogos = [...this.logos, ...this.logos]; // Dublăm lista logo-urilor
   }
 }
