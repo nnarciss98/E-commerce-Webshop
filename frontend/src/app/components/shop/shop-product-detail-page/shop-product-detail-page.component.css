@@ -36,3 +36,26 @@
     background-color: #0056b3;
   }
   
+  .product-detail {
+    text-align: center;
+  }
+  
+  .image-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+  }
+  
+  .image-carousel img {
+    max-width: 100%;
+    height: auto;
+    margin: 0 10px;
+  }
+  
+  .image-carousel button {
+    padding: 10px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
