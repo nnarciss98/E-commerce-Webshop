@@ -55,7 +55,7 @@ export class CategoriesComponent {
     },
     {
       name: 'Automatisation du bâtiment',
-      description: 'Description de la catégorie 3.',
+      description: '',
       image: 'path/to/image3.jpg',
       link: '/category3',
     },

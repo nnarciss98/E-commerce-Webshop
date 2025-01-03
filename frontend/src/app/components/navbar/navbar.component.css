@@ -2,7 +2,7 @@
   border-radius: 50px; /* Apply rounded corners */
 }
 .nav-item:hover {
-  background-color: #d3d4d5; /* Gray background */
+  background-color: #ff9400;
   transition: background-color 0.3s;
 }
 .nav-link {
