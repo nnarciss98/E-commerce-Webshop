@@ -8,7 +8,8 @@
       *ngFor="let category of categories"
     >
       <img
-        src="../../../../assets/images/logo-transparent-png.png"
+        [src]="category.image"
+        alt="{{ category.name }}"
         class="bi text-body-secondary flex-shrink-0 me-3"
         width="40"
         height="40"
