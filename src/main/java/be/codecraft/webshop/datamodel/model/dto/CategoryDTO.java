@@ -15,4 +15,5 @@ public class CategoryDTO {
     private String name;
     private UUID parentCategoryId;
     private List<CategoryDTO> subcategories;
+    private String imageUrl;
 }

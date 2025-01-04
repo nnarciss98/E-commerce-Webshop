@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { Product } from '../../types';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'shop-featured-products',
@@ -10,47 +12,20 @@ import { RouterModule } from '@angular/router';
   styleUrl: './shop-featured-products.component.css'
 })
 export class ShopFeaturedProductsComponent {
-  isGridView = true; // Default to grid view
-  featuredProducts = [
-    {
-      id: 1,
-      title: 'Smartphone',
-      price: 699.99,
-      imageUrl: 'https://via.placeholder.com/200x150?text=Smartphone'
-    },
-    {
-      id: 2,
-      title: 'Wireless Headphones',
-      price: 199.99,
-      imageUrl: 'https://via.placeholder.com/200x150?text=Headphones'
-    },
-    {
-      id: 3,
-      title: 'Gaming Laptop',
-      price: 1499.99,
-      imageUrl: 'https://via.placeholder.com/200x150?text=Laptop'
-    },
-    {
-      id: 4,
-      title: '4K TV',
-      price: 899.99,
-      imageUrl: 'https://via.placeholder.com/200x150?text=4K+TV'
-    },
-    {
-      id: 5,
-      title: 'Fitness Tracker',
-      price: 99.99,
-      imageUrl: 'https://via.placeholder.com/200x150?text=Fitness+Tracker'
-    },
-    {
-      id: 6,
-      title: 'Bluetooth Speaker',
-      price: 49.99,
-      imageUrl: 'https://via.placeholder.com/200x150?text=Speaker'
-    }
-  ];
+  featuredProducts: Product[] = [];
 
-  onBuyNow(productId: number) {
+  constructor(private productService: ProductService) {}
+
+  ngOnInit(): void {
+    this.productService.getAllProducts().subscribe((products) => {
+      this.featuredProducts = products.map(product => ({
+        ...product,
+        imageUrls: [`https://via.placeholder.com/100?text=Product`] // Keep only the first image
+      }));
+    });
+  }
+
+  onBuyNow(productId: string) {
     console.log(`Buy Now clicked for product ID: ${productId}`);
     // Logic for adding to cart or navigating to product details can be added here
   }

@@ -1,7 +1,7 @@
 /* Section Styles */
 .featured-products {
     text-align: center;
-    margin: 40px 0;
+    margin: 40px 100px;
   }
   
   .featured-products h2 {
@@ -13,7 +13,7 @@
   /* Grid and List View Styles */
   .products.grid-view {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-columns: repeat(4, 1fr); /* 3 columns */
     gap: 20px;
   }
   

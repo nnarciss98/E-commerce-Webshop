@@ -1,8 +1,13 @@
-<section class="product-detail">
-    <h2>{{ product.name }}</h2>
-    <img [src]="product.imageUrl" alt="{{ product.name }}">
-    <p><strong>Price: </strong>\${{ product.price }}</p>
-    <p><strong>Description: </strong>{{ product.description }}</p>
-    <button (click)="goBack()">Back to Products</button>
-  </section>
-  
+<section class="product-detail" *ngIf="product">
+  <h2>{{ product.name }}</h2>
+
+  <div class="image-carousel" *ngIf="product.imageUrls.length && product.imageUrls.length > 0">
+    <button (click)="prevImage()" [disabled]="currentImageIndex === 0">Previous</button>
+    <img [src]="product.imageUrls[currentImageIndex]" alt="{{ product.name }}">
+    <button (click)="nextImage()" [disabled]="currentImageIndex === product.imageUrls.length - 1">Next</button>
+  </div>
+
+  <p><strong>Price: </strong>${{ product.price }}</p>
+  <p><strong>Description: </strong>{{ product.description }}</p>
+  <button (click)="goBack()">Back to Products</button>
+</section>
