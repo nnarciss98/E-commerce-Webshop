@@ -33,7 +33,9 @@ public class EntityMapper {
                 product.getName(),
                 product.getPrice(),
                 product.getDescription(),
-                product.getStockQuantity()
+                product.getStockQuantity(),
+                product.getCategory().getId(),
+                product.getImageUrls()
         );
     }
 
@@ -43,6 +45,7 @@ public class EntityMapper {
         product.setPrice(productDTO.getPrice());
         product.setDescription(productDTO.getDescription());
         product.setStockQuantity(productDTO.getStockQuantity());
+        product.setImageUrls(productDTO.getImageUrls());
         return product;
     }
 
@@ -137,6 +140,7 @@ public class EntityMapper {
     public CartItem convertCartItemToEntity(CartItemDTO cartItemDTO) {
         CartItem cartItem = new CartItem();
         cartItem.setProductId(cartItemDTO.getProductId());
+        cartItem.setCartId(cartItemDTO.getCartId());
 
         productRepository.findById(cartItemDTO.getProductId()).ifPresent(cartItem::setProduct);
 
@@ -162,6 +166,7 @@ public class EntityMapper {
     private CartItemDTO convertCartItemToDTO(CartItem cartItem) {
         return CartItemDTO.builder()
                 .productId(cartItem.getProductId())
+                .cartId(cartItem.getCartId())
                 .productName(Optional.ofNullable(cartItem.getProduct().getName()).filter(name -> !name.isEmpty()).orElse(""))
                 .productPrice(cartItem.getProduct().getPrice())
                 .quantity(cartItem.getQuantity())
@@ -223,6 +228,7 @@ public class EntityMapper {
                                 .parentCategoryId(subcategory.getParentCategory() != null ? subcategory.getParentCategory().getId() : null)
                                 .build())
                         .collect(Collectors.toList()))
+                .imageUrl(category.getImageUrl())
                 .build();
     }
 
@@ -237,6 +243,7 @@ public class EntityMapper {
                 .id(categoryDTO.getId())
                 .name(categoryDTO.getName())
                 .parentCategory(parentCategory)
+                .imageUrl(categoryDTO.getImageUrl())
                 .build();
 
         if (categoryDTO.getSubcategories() != null && !categoryDTO.getSubcategories().isEmpty()) {

@@ -27,4 +27,5 @@ public class Category {
     @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL)
     private List<Category> subcategories = new ArrayList<>();
 
+    private String imageUrl;
 }

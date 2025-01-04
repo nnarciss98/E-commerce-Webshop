@@ -3,6 +3,7 @@ package be.codecraft.webshop.datamodel.model.dto;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -16,5 +17,6 @@ public class ProductDTO {
     private BigDecimal price;
     private String description;
     private Integer stockQuantity;
-    private String categoryId;
+    private UUID categoryId;
+    private List<String> imageUrls;
 }
