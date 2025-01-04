@@ -1,0 +1,13 @@
+<div class="partner-carousel overflow-hidden">
+  <div class="scroll-wrapper d-flex" #scrollWrapper>
+    <div class="scroll-content d-flex gap-5" #scrollContent>
+      <!-- Logos dynamically generated -->
+      <div
+        class="logo d-flex justify-content-center align-items-center"
+        *ngFor="let logo of duplicatedLogos"
+      >
+        <img [src]="logo.url" alt="Logo {{ logo.id }}" class="img-fluid" />
+      </div>
+    </div>
+  </div>
+</div>

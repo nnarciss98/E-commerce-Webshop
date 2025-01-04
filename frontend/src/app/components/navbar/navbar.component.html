@@ -1,46 +1,13 @@
-<div class="container border-bottom">
-  <header
-    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4"
-  >
-    <div class="col-md-3 mb-2 mb-md-0">
+<nav class="navbar navbar-expand-md">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
       <img
         src="assets/images/logo-transparent-png.png"
-        alt=""
-        width="50"
-        height="50"
+        width="100"
+        height="100"
+        alt="logo"
       />
-    </div>
-
-    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-      <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-      <li><a href="#" class="nav-link px-2">Features</a></li>
-      <li><a href="#" class="nav-link px-2">Pricing</a></li>
-      <li><a href="#" class="nav-link px-2">FAQs</a></li>
-      <li><a href="#" class="nav-link px-2">About</a></li>
-    </ul>
-
-    <div class="col-md-3 text-end">
-      <button type="button" class="btn btn-outline-primary me-2">Login</button>
-      <button type="button" class="btn btn-primary">Sign-up</button>
-    </div>
-  </header>
-</div>
-
-<!-- <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <div class="container-fluid">
-    <div class="col-md-3 mb-2 mb-md-0">
-      <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-        <svg
-          class="bi"
-          width="40"
-          height="32"
-          role="img"
-          aria-label="Bootstrap"
-        >
-          <use xlink:href="#bootstrap"></use>
-        </svg>
-      </a>
-    </div>
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -53,26 +20,56 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
+      <!-- Navbar Links -->
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <li class="nav-item px-3">
+          <a class="nav-link active" routerLink="/">Home</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+        <li class="nav-item px-3">
+          <a class="nav-link active" routerLink="/about-us">About</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        <li class="nav-item px-3">
+          <a class="nav-link active" routerLink="/projects">Projects</a>
+        </li>
+        <li class="nav-item px-3">
+          <a class="nav-link active" routerLink="/contact">Contact</a>
+        </li>
+        <li class="nav-item px-3">
+          <a class="nav-link active" routerLink="/shop">Shop</a>
+        </li>
+        <li class="nav-item px-3">
+          <a class="nav-link active text-danger" routerLink="/shop">Promo</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+
+      <form class="d-flex mt-3 mt-lg-0 me-auto position-relative" role="search">
         <input
-          class="form-control me-2"
+          class="form-control me-2 pe-5 border border-1 bg-light text-dark"
           type="search"
-          placeholder="Search"
+          placeholder="Chercher un produit, une réference, une marque,.."
           aria-label="Search"
+          data-np-intersection-state="visible"
         />
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button
+          class="btn btn-success position-absolute end-0 top-50 translate-middle-y me-2"
+          type="submit"
+        >
+          Search
+        </button>
       </form>
+
+      <!-- Buttons (Added Inside Collapse) -->
+      <div class="d-flex gap-3 mt-3 mt-md-0">
+        <button
+          class="btn btn-light px-3 border border-1 nav-btn"
+          type="button"
+        >
+          <a class="nav-link active" routerLink="/">Devenez client</a>
+        </button>
+        <button class="btn btn-primary px-3 nav-btn" type="button">
+          <a class="nav-link active" routerLink="/">Se connecter</a>
+        </button>
+      </div>
     </div>
   </div>
-</nav> -->
+</nav>

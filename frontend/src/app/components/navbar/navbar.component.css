@@ -1,0 +1,24 @@
+.nav-item {
+  border-radius: 50px; /* Apply rounded corners */
+}
+.nav-item:hover {
+  background-color: #ff9400;
+  transition: background-color 0.3s;
+}
+.nav-link {
+  transition: color 0.3s;
+}
+.nav-item .nav-link {
+  font-weight: 500;
+}
+
+.nav-btn {
+  font-weight: 500;
+}
+
+.form-control:focus {
+  background-color: #f9f9f9; /* Custom background color on focus */
+  border-color: #6c757d; /* Custom border color on focus */
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25); /* Custom shadow */
+  outline: none; /* Removes default outline */
+}

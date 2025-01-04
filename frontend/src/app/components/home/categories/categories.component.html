@@ -1,0 +1,35 @@
+<div id="icon-grid" class="container pt-5">
+  <h2 class="">Explorez nos catégories</h2>
+  <div
+    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5"
+  >
+    <div
+      class="col d-flex align-items-start"
+      *ngFor="let category of categories"
+    >
+      <img
+        [src]="category.image"
+        alt="{{ category.name }}"
+        class="bi text-body-secondary flex-shrink-0 me-3"
+        width="40"
+        height="40"
+        alt=""
+      />
+      <div>
+        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">
+          {{ category.name }}
+        </h3>
+        <p>{{ category.description }}</p>
+        <a
+          [routerLink]="category.link"
+          class="badge text-bg-primary rounded-pill nav-link active"
+          >Voir plus</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- class="bi text-body-secondary flex-shrink-0 me-3"
+            width="1.75em"
+            height="1.75em" -->
