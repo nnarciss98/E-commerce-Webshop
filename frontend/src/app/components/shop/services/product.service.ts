@@ -36,7 +36,7 @@ export class ProductService {
       description: 'Bétonnière portable avec une grande capacité de mélange.',
       stockQuantity: 20,
       categoryId: '1',
-      imageUrls: ['https://picsum.photos/200'],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'MixItUp',
     },
     {
@@ -47,7 +47,7 @@ export class ProductService {
         'Niveau laser précis pour des mesures et un nivellement exacts.',
       stockQuantity: 80,
       categoryId: '1',
-      imageUrls: ['assets/images/laser-level.jpg'],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'LevelPro',
     },
     {
@@ -58,7 +58,7 @@ export class ProductService {
         'Machine à souder compacte et efficace pour la fabrication métallique.',
       stockQuantity: 100,
       categoryId: '1',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'WeldTech',
     },
     {
@@ -69,7 +69,7 @@ export class ProductService {
         'Générateur portable fiable pour alimenter outils et équipements.',
       stockQuantity: 15,
       categoryId: '2',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'PowerGo',
     },
     {
@@ -80,7 +80,7 @@ export class ProductService {
         'Compresseur d’air industriel pour des applications polyvalentes.',
       stockQuantity: 25,
       categoryId: '2',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'AirPro',
     },
     {
@@ -91,7 +91,7 @@ export class ProductService {
         'Ponceuse électrique performante pour surfaces en bois et métal.',
       stockQuantity: 10,
       categoryId: '2',
-      imageUrls: [],
+      imageUrls: ['assets/images/perceuse.png'],
       brand: 'SanderMax',
     },
     {
@@ -102,7 +102,7 @@ export class ProductService {
         'Aspirateur industriel puissant pour les chantiers de construction.',
       stockQuantity: 35,
       categoryId: '2',
-      imageUrls: [],
+      imageUrls: ['assets/images/perceuse.png'],
       brand: 'CleanSweep',
     },
     {
@@ -113,7 +113,7 @@ export class ProductService {
         'Purificateur d’air HEPA pour un environnement de travail sain.',
       stockQuantity: 50,
       categoryId: '2',
-      imageUrls: [],
+      imageUrls: ['assets/images/perceuse.png'],
       brand: 'PureAir',
     },
     {
@@ -123,7 +123,7 @@ export class ProductService {
       description: 'Gilet de sécurité haute visibilité pour les chantiers.',
       stockQuantity: 100,
       categoryId: '3',
-      imageUrls: [],
+      imageUrls: ['assets/images/perceuse.png'],
       brand: 'SafeGear',
     },
     {
@@ -133,7 +133,7 @@ export class ProductService {
       description: 'Casque de protection robuste pour une sécurité maximale.',
       stockQuantity: 60,
       categoryId: '3',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'ProtectHead',
     },
     {
@@ -144,7 +144,7 @@ export class ProductService {
         'Gants de travail résistants pour une manipulation sécurisée.',
       stockQuantity: 40,
       categoryId: '3',
-      imageUrls: [],
+      imageUrls: ['assets/images/perceuse.png'],
       brand: 'HandGuard',
     },
     {
@@ -155,7 +155,7 @@ export class ProductService {
         'Chaussures de sécurité avec embout renforcé pour les chantiers.',
       stockQuantity: 20,
       categoryId: '3',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'SteelToe',
     },
     {
@@ -166,7 +166,7 @@ export class ProductService {
         'Lunettes de protection anti-poussière et anti-éclaboussures.',
       stockQuantity: 70,
       categoryId: '3',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'ClearVision',
     },
     {
@@ -177,7 +177,7 @@ export class ProductService {
         'Marteau perforateur pour perçage de béton et surfaces dures.',
       stockQuantity: 30,
       categoryId: '4',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'HammerPro',
     },
     {
@@ -187,7 +187,7 @@ export class ProductService {
       description: 'Scie circulaire puissante pour des coupes précises.',
       stockQuantity: 25,
       categoryId: '4',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'CutMaster',
     },
     {
@@ -198,7 +198,7 @@ export class ProductService {
         'Cloueur pneumatique pour des assemblages rapides et solides.',
       stockQuantity: 15,
       categoryId: '4',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'NailFast',
     },
     {
@@ -208,7 +208,7 @@ export class ProductService {
       description: 'Échafaudage mobile sécurisé pour travaux en hauteur.',
       stockQuantity: 10,
       categoryId: '4',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'SkyBuild',
     },
     {
@@ -219,7 +219,7 @@ export class ProductService {
         'Coffret à outils complet pour les professionnels du bâtiment.',
       stockQuantity: 200,
       categoryId: '4',
-      imageUrls: [],
+      imageUrls: ['assets/images/scie.png'],
       brand: 'ToolBoxPro',
     },
   ];

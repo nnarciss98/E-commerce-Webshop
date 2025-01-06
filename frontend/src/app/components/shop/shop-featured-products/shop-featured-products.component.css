@@ -1,4 +1,11 @@
-.card-products {
-  height: 456px;
-  width: 300px;
+.product-card {
+  transition: transform 0.2s;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+}
+img {
+  object-fit: contain;
+  height: 204.5px;
+  width: 158.5px;
 }

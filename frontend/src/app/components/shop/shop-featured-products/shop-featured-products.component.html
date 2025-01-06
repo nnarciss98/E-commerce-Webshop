@@ -3,15 +3,17 @@
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-5">
     <div class="col" *ngFor="let product of featuredProducts">
       <a [routerLink]="['/product', product.id]" class="nav-link">
-        <div class="card h-100 shadow-sm">
+        <div class="product-card text-center">
           <img
             [src]="product.imageUrls[0]"
-            class="card-img rounded mb-2 p-4"
+            class="card-img-top rounded mb-2"
             [alt]="product.name"
           />
-          <div class="card-body text-center">
-            <h5 class="card-title mb-2">{{ product.name }}</h5>
-            <p class="card-text">
+          <div class="card-body">
+            <h5 class="card-title mb-2 fs-5 text-body-secondary">
+              {{ product.name }}
+            </h5>
+            <p class="card-text fs-6 text-body-tertiary">
               {{ product.description }}
             </p>
             <!-- <button type="button" class="btn border rounded-pill px-3">
