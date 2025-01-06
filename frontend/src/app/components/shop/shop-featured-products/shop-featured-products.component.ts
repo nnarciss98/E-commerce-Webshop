@@ -9,7 +9,7 @@ import { ProductService } from '../services/product.service';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './shop-featured-products.component.html',
-  styleUrl: './shop-featured-products.component.css'
+  styleUrl: './shop-featured-products.component.css',
 })
 export class ShopFeaturedProductsComponent {
   featuredProducts: Product[] = [];
@@ -18,9 +18,12 @@ export class ShopFeaturedProductsComponent {
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe((products) => {
-      this.featuredProducts = products.map(product => ({
+      this.featuredProducts = products.map((product) => ({
         ...product,
-        imageUrls: [`https://via.placeholder.com/100?text=Product`] // Keep only the first image
+        imageUrls:
+          product.imageUrls.length > 0
+            ? product.imageUrls
+            : ['https://via.placeholder.com/100?text=No+Image'],
       }));
     });
   }

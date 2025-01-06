@@ -11,15 +11,15 @@
         [src]="category.image"
         alt="{{ category.name }}"
         class="bi text-body-secondary flex-shrink-0 me-3"
-        width="40"
-        height="40"
+        width="64"
+        height="64"
         alt=""
       />
       <div>
-        <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">
+        <h3 class="fw-semibold mb-1 fs-4 bi text-body-secondary">
           {{ category.name }}
         </h3>
-        <p>{{ category.description }}</p>
+        <p class="text-body-tertiary">{{ category.description }}</p>
         <a
           [routerLink]="category.link"
           class="badge text-bg-primary rounded-pill nav-link active"
@@ -31,5 +31,5 @@
 </div>
 
 <!-- class="bi text-body-secondary flex-shrink-0 me-3"
-            width="1.75em"
-            height="1.75em" -->
+              width="1.75em"
+              height="1.75em" -->

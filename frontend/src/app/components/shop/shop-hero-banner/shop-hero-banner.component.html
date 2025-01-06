@@ -1,9 +1,18 @@
-<div class="hero-banner">
-    <img src="https://via.placeholder.com/1200x400" alt="Shop Promotion" class="hero-image">
-    <div class="hero-content">
-      <h1 class="hero-title">Welcome to Our Shop!</h1>
-      <p class="hero-subtitle">Discover amazing deals and new arrivals.</p>
-      <button class="hero-cta" (click)="onShopNow()">Shop Now</button>
-    </div>
+<div
+  class="hero-banner position-relative d-flex align-items-center justify-content-center text-center text-white"
+>
+  <img
+    src="../../../../assets/images/shop-hero-banner-img.jpg"
+    alt="Shop Promotion"
+    class="hero-image img-fluid w-100 h-100"
+  />
+  <div class="hero-content position-absolute bg-dark bg-opacity-50 rounded p-4">
+    <h1 class="hero-title display-4 mb-3">Welcome to Our Shop!</h1>
+    <p class="hero-subtitle fs-5 mb-4">
+      Discover amazing deals and new arrivals.
+    </p>
+    <button class="btn btn-primary px-3 nav-btn" type="button">
+      <a class="nav-link active" routerLink="/">Devenir client</a>
+    </button>
   </div>
-  
+</div>
