@@ -16,13 +16,13 @@
             <p class="card-text fs-6 text-body-tertiary">
               {{ product.description }}
             </p>
-            <button
+            <!-- <button
               type="button"
               class="btn btn-primary mt-2"
               (click)="onBuyNow(product.id)"
             >
               Buy Now
-            </button>
+            </button> -->
           </div>
         </div>
       </a>
@@ -33,7 +33,12 @@
   <nav class="mt-5">
     <ul class="pagination justify-content-center">
       <li class="page-item" [class.disabled]="currentPage === 1">
-        <a class="page-link" (click)="goToPage(currentPage - 1)">Previous</a>
+        <a
+          class="page-link"
+          (click)="goToPage(currentPage - 1)"
+          aria-label="Previous"
+          ><span aria-hidden="true">&laquo;</span></a
+        >
       </li>
       <li
         class="page-item"
@@ -43,7 +48,13 @@
         <a class="page-link" (click)="goToPage(page)">{{ page }}</a>
       </li>
       <li class="page-item" [class.disabled]="currentPage === totalPages">
-        <a class="page-link" (click)="goToPage(currentPage + 1)">Next</a>
+        <a
+          class="page-link"
+          (click)="goToPage(currentPage + 1)"
+          aria-label="Next"
+        >
+          <span aria-hidden="true">&raquo;</span></a
+        >
       </li>
     </ul>
   </nav>
