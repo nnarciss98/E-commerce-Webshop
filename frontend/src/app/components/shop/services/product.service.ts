@@ -226,6 +226,13 @@ export class ProductService {
 
   constructor() {}
 
+  getPaginatedProducts(page: number, pageSize: number): Observable<Product[]> {
+    const startIndex = (page - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    const paginatedProducts = this.products.slice(startIndex, endIndex);
+    return of(paginatedProducts);
+  }
+
   getAllProducts(): Observable<Product[]> {
     return of(this.products);
   }
