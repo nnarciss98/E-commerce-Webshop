@@ -21,9 +21,12 @@ export class ShopProductCategoriesComponent implements OnInit {
       // Assuming the category service provides a `name` and an image URL for each category
       this.categories = categories.map((category) => ({
         ...category,
-        imageUrl: `https://via.placeholder.com/100?text=${encodeURIComponent(
-          category.name
-        )}`, // Generate placeholder image URL dynamically
+        imageUrl:
+          category.imageUrl.length > 0
+            ? category.imageUrl
+            : `https://via.placeholder.com/100?text=${encodeURIComponent(
+                category.name
+              )}`, // Generate placeholder image URL dynamically
       }));
     });
   }

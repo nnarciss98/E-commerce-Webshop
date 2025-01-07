@@ -26,7 +26,12 @@ export class ProductService {
         'Meuleuse d’angle robuste pour couper et meuler les matériaux.',
       stockQuantity: 30,
       categoryId: '1',
-      imageUrls: ['assets/images/scie.png'],
+      imageUrls: [
+        'assets/images/scie.png',
+        'assets/images/perceuse.png',
+        'assets/images/scie.png',
+        'assets/images/perceuse.png',
+      ],
       brand: 'GrindMaster',
     },
     {

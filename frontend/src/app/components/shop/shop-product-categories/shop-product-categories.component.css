@@ -1,43 +1,32 @@
+.small-img {
+  width: 50px; /* Set the desired width for the div */
+  height: 50px; /* Set the same height to match the image size */
+  display: flex; /* Ensure the content inside is centered */
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
+  overflow: hidden; /* Prevent overflow */
+}
 
-  
-  /* Shared Styles for Grid and List */
-  .categories-grid{
-    margin: 20px 0;
-  }
-  
-  .category-tile {
-    text-align: center;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .category-tile:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .category-image {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    margin-bottom: 10px;
-  }
-  
-  .category-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-  
-  /* Grid View */
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three columns */
-    gap: 20px; /* Space between tiles */
-  }
-  
-  .product-categories-wrapper {
-    margin-top: 20px;
-  }
+img {
+  max-width: 100%; /* Ensure the image scales properly */
+  max-height: 100%; /* Ensure the image fits within the div */
+}
+.hover-text {
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.3s ease; /* Smooth transition on hover */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center perfectly */
+}
+
+.small-img:hover .hover-text {
+  opacity: 1; /* Show text on hover */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ); /* Optional: add a semi-transparent background */
+  padding: 5px 10px; /* Add padding around text */
+  border-radius: 5px; /* Optional: rounded corners for the text box */
+}
