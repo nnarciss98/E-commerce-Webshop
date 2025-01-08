@@ -1,35 +1,23 @@
-<div id="icon-grid" class="container pt-5">
-  <h2 class="">Explorez nos catégories</h2>
-  <div
-    class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5"
-  >
-    <div
-      class="col d-flex align-items-start"
-      *ngFor="let category of categories"
-    >
-      <img
-        [src]="category.image"
-        alt="{{ category.name }}"
-        class="bi text-body-secondary flex-shrink-0 me-3"
-        width="64"
-        height="64"
-        alt=""
-      />
-      <div>
-        <h3 class="fw-semibold mb-1 fs-4 bi text-body-secondary">
-          {{ category.name }}
-        </h3>
-        <p class="text-body-tertiary">{{ category.description }}</p>
-        <a
-          [routerLink]="category.link"
-          class="badge text-bg-primary rounded-pill nav-link active"
-          >Voir plus</a
+<div class="container px-5 pt-5 mb-14">
+  <!-- Section Title -->
+  <div class="flex items-center mb-14">
+    <div class="w-5 h-10 bg-btn rounded-sm mr-4"></div>
+    <div>
+      <h2 class="text-btn text-lg font-medium">Nos Categories</h2>
+    </div>
+  </div>
+  <div class="container flex justify-between gap-4">
+    <div *ngFor="let category of categories">
+      <a routerLink="/link">
+        <div
+          class="border border-1 rounded-md px-5 w-44 h-36 text-center flex flex-col justify-center items-center hover:bg-btn-hover"
         >
-      </div>
+          <img [src]="category.image" [alt]="category.name" class="mb-3" />
+          <p class="text-primary text-sm">
+            {{ category.name }}
+          </p>
+        </div>
+      </a>
     </div>
   </div>
 </div>
-
-<!-- class="bi text-body-secondary flex-shrink-0 me-3"
-              width="1.75em"
-              height="1.75em" -->

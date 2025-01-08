@@ -1,34 +1,46 @@
-<div class="px-4 my-5 text-center border-bottom">
-  <h1 class="display-4 fw-bold">Bienvenue chez Onis-Mati</h1>
-  <div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">
-      Chez Onis-Mati, nous vous accompagnons pour transformer vos idées en
-      projets concrets avec des solutions innovantes et adaptées à vos besoins.
-      Notre expertise couvre une gamme complète de services allant de la
-      conception web à l’intégration de solutions technologiques avancées.
-    </p>
+<div
+  class="px-4 mb-5 text-center h-[75vh] flex justify-center items-center flex-col relative overflow-hidden"
+>
+  <!-- Background Video -->
+  <img
+    class="absolute inset-0 w-full h-full object-cover object-bottom"
+    src="assets/images/shop-hero-banner-img.jpg"
+  />
 
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-      <button type="button" class="btn btn-danger px-4 me-sm-3 nav-btn">
-        Découvrez Nos Offres
-      </button>
-      <button type="button" class="btn btn-light px-4 nav-btn border border-1">
-        Voir projets
-      </button>
+  <!-- Content Overlay -->
+  <div class="relative z-10 text-center">
+    <h1 class="text-4xl font-semibold mb-7 text-slate-100">
+      Bienvenue chez Onis-Mati
+    </h1>
+    <div class="col-lg-6 mx-auto flex justify-center items-center flex-col">
+      <p class="text-lg mb-7 lg:w-[65%] text-slate-200">
+        Chez Onis-Mati, nous vous accompagnons pour transformer vos idées en
+        projets concrets avec des solutions innovantes et adaptées à vos
+        besoins. Notre expertise couvre une gamme complète de services allant de
+        la conception web à l’intégration de solutions technologiques avancées.
+      </p>
+
+      <div class="grid gap-2 sm:flex justify-center mb-7">
+        <button
+          type="button"
+          class="btn bg-red-600 text-white px-4 sm:mr-3 py-2 rounded-md"
+        >
+          Découvrez Nos Offres
+        </button>
+        <button
+          type="button"
+          class="btn bg-white text-primary px-4 py-2 rounded-md border border-gray-300"
+        >
+          Voir projets
+        </button>
+      </div>
     </div>
   </div>
-  <div class="overflow-hidden" style="max-height: 30vh">
-    <div class="container px-5">
-      <img
-        src="../../../assets/images/landing-page.jpeg"
-        class="img-fluid border rounded-3 shadow-lg mb-4"
-        alt="Exemple d'image"
-        width="700"
-        height="500"
-        loading="lazy"
-      />
-    </div>
-  </div>
+
+  <!-- Optional Overlay for darkening video -->
+  <div class="absolute inset-0 bg-black/30"></div>
 </div>
+
 <app-categories></app-categories>
 <app-partenaires></app-partenaires>
+<shop-featured-products></shop-featured-products>

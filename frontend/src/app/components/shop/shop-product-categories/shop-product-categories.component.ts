@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../../types';
 import { CategoryService } from '../services/category.service';
+import { CategoriesComponent } from '../../home/categories/categories.component';
 
 @Component({
   selector: 'shop-product-categories',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CategoriesComponent],
   templateUrl: './shop-product-categories.component.html',
   styleUrl: './shop-product-categories.component.css',
 })

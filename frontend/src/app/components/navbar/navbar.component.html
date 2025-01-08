@@ -1,74 +1,125 @@
-<nav class="navbar navbar-expand-md">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
+<nav class="border-b">
+  <div
+    class="container mx-auto flex items-center justify-between px-4 py-3 md:px-6"
+  >
+    <!-- Brand Logo -->
+    <a routerLink="/" class="flex items-center">
       <img
         src="assets/images/logo-transparent-png.png"
-        width="100"
-        height="100"
+        class="w-20 h-20 mr-5"
         alt="logo"
       />
     </a>
+
+    <!-- Mobile Toggle -->
     <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarCollapse"
-      aria-controls="navbarCollapse"
-      aria-expanded="false"
+      class="md:hidden text-gray-700 focus:outline-none"
       aria-label="Toggle navigation"
+      (click)="toggleNavbar()"
     >
-      <span class="navbar-toggler-icon"></span>
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        ></path>
+      </svg>
     </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <!-- Navbar Links -->
-      <ul class="navbar-nav me-auto mb-2 mb-md-0">
-        <li class="nav-item px-3">
-          <a class="nav-link active" routerLink="/">Home</a>
+
+    <!-- Navbar Links -->
+    <div
+      [ngClass]="{ hidden: !isNavbarOpen, flex: isNavbarOpen }"
+      class="hidden md:flex w-full items-center justify-between md:space-x-8"
+    >
+      <ul
+        class="flex flex-col md:flex-row items-center space-y-3 md:space-y-0 md:space-x-4"
+      >
+        <li>
+          <a
+            routerLink="/"
+            class="text-primary font-medium hover:text-btn px-4 transition"
+          >
+            Home
+          </a>
         </li>
-        <li class="nav-item px-3">
-          <a class="nav-link active" routerLink="/about-us">About</a>
+        <li>
+          <a
+            routerLink="/about-us"
+            class="text-primary font-medium hover:text-btn px-4 transition"
+          >
+            About
+          </a>
         </li>
-        <li class="nav-item px-3">
-          <a class="nav-link active" routerLink="/projects">Projects</a>
+        <li>
+          <a
+            routerLink="/projects"
+            class="text-primary font-medium hover:text-btn px-4 transition"
+          >
+            Projects
+          </a>
         </li>
-        <li class="nav-item px-3">
-          <a class="nav-link active" routerLink="/contact">Contact</a>
+        <li>
+          <a
+            routerLink="/contact"
+            class="text-primary font-medium hover:text-btn px-4 transition"
+          >
+            Contact
+          </a>
         </li>
-        <li class="nav-item px-3">
-          <a class="nav-link active" routerLink="/shop">Shop</a>
+        <li>
+          <a
+            routerLink="/shop"
+            class="text-primary font-medium hover:text-btn px-4 transition"
+          >
+            Shop
+          </a>
         </li>
-        <li class="nav-item px-3">
-          <a class="nav-link active text-danger" routerLink="/shop">Promo</a>
+        <li>
+          <a
+            routerLink="/promo"
+            class="text-red-500 font-medium hover:text-red-700 px-4 transition"
+          >
+            Promo
+          </a>
         </li>
       </ul>
 
-      <form class="d-flex mt-3 mt-lg-0 me-auto position-relative" role="search">
+      <!-- Search Form -->
+      <form class="relative mt-3 md:mt-0">
         <input
-          class="form-control me-2 pe-5 border border-1 bg-light text-dark"
           type="search"
-          placeholder="Chercher un produit, une réference, une marque,.."
-          aria-label="Search"
-          data-np-intersection-state="visible"
+          class="w-full md:w-72 border border-gray-300 rounded-lg py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:bg-gray-100"
+          placeholder="Search for products, brands..."
         />
         <button
-          class="btn btn-success position-absolute end-0 top-50 translate-middle-y me-2"
           type="submit"
+          class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-green-500 text-white px-3 py-1 rounded-md hover:bg-green-600"
         >
           Search
         </button>
       </form>
 
-      <!-- Buttons (Added Inside Collapse) -->
-      <div class="d-flex gap-3 mt-3 mt-md-0">
-        <button
-          class="btn btn-light px-3 border border-1 nav-btn"
-          type="button"
+      <!-- Buttons -->
+      <div class="flex flex-col md:flex-row items-center gap-3 mt-4 md:mt-0">
+        <a
+          routerLink="/"
+          class="border border-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-100 font-medium"
         >
-          <a class="nav-link active" routerLink="/">Devenez client</a>
-        </button>
-        <button class="btn btn-primary px-3 nav-btn" type="button">
-          <a class="nav-link active" routerLink="/">Se connecter</a>
-        </button>
+          Devenez client
+        </a>
+        <a
+          routerLink="/"
+          class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 font-medium"
+        >
+          Se connecter
+        </a>
       </div>
     </div>
   </div>
