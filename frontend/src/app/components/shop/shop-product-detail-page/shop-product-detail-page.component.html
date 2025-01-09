@@ -1,38 +1,34 @@
 <section class="product-detail container mx-auto py-8" *ngIf="product">
   <div class="flex flex-col lg:flex-row p-4 gap-8">
     <!-- Product Carousel -->
-    <div id="product-detail-carousel" class="lg:w-1/2 relative">
-      <div class="carousel-inner h-1/2">
-        <div class="carousel-item active">
+    <div class="grid gap-4 w-full lg:w-1/2">
+      <!-- Main Product Image -->
+      <div
+        *ngIf="product?.imageUrls && product.imageUrls.length"
+        class="bg-itemsBg rounded-md relative w-full h-96"
+      >
+        <img
+          class="object-contain w-full h-full rounded-md"
+          [src]="product.imageUrls[currentImageIndex]"
+          [alt]="'Image of ' + product.name"
+        />
+      </div>
+
+      <!-- Thumbnail Grid -->
+      <div class="flex justify-between">
+        <div
+          *ngFor="let image of product?.imageUrls; let i = index"
+          (click)="currentImageIndex = i"
+          class="cursor-pointer w-40 h-32 flex justify-center items-center"
+        >
           <img
-            [src]="product.imageUrls[currentImageIndex]"
-            class="w-full object-cover h-1/2 rounded-lg"
-            [alt]="product.name"
+            class="object-cover w-full h-full border bg-itemsBg p-2 rounded-md"
+            [class.border-blue-500]="i === currentImageIndex"
+            [src]="image"
+            [alt]="'Thumbnail ' + (i + 1) + ' of ' + product.name"
           />
         </div>
       </div>
-
-      <!-- Previous Button -->
-      <button
-        class="carousel-control-prev absolute top-1/2 left-4 transform -translate-y-1/2 p-2 bg-black bg-opacity-50 rounded-full"
-        (click)="prevImage()"
-      >
-        <span class="carousel-control-prev-icon text-white" aria-hidden="true"
-          >&lt;</span
-        >
-        <span class="visually-hidden">Previous</span>
-      </button>
-
-      <!-- Next Button -->
-      <button
-        class="carousel-control-next absolute top-1/2 right-4 transform -translate-y-1/2 p-2 bg-black bg-opacity-50 rounded-full"
-        (click)="nextImage()"
-      >
-        <span class="carousel-control-next-icon text-white" aria-hidden="true"
-          >&gt;</span
-        >
-        <span class="visually-hidden">Next</span>
-      </button>
     </div>
 
     <!-- Product Details -->

@@ -16,6 +16,9 @@ module.exports = {
           DEFAULT: "#ff9400", // Tailwind's `orange-500`
           hover: "#EA580C", // Tailwind's `orange-600` for hover
         },
+        itemsBg: {
+          DEFAULT: "#F5F5F5",
+        },
       },
     },
   },
