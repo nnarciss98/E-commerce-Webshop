@@ -1,13 +1,54 @@
-<section class="product-detail" *ngIf="product">
-  <h2>{{ product.name }}</h2>
+<section class="product-detail container mx-auto py-8" *ngIf="product">
+  <div class="flex flex-col lg:flex-row p-4 gap-8">
+    <!-- Product Carousel -->
+    <div class="grid gap-4 w-full lg:w-1/2">
+      <!-- Main Product Image -->
+      <div
+        *ngIf="product?.imageUrls && product.imageUrls.length"
+        class="bg-itemsBg rounded-md relative w-full h-96"
+      >
+        <img
+          class="object-contain w-full h-full rounded-md"
+          [src]="product.imageUrls[currentImageIndex]"
+          [alt]="'Image of ' + product.name"
+        />
+      </div>
 
-  <div class="image-carousel" *ngIf="product.imageUrls.length && product.imageUrls.length > 0">
-    <button (click)="prevImage()" [disabled]="currentImageIndex === 0">Previous</button>
-    <img [src]="product.imageUrls[currentImageIndex]" alt="{{ product.name }}">
-    <button (click)="nextImage()" [disabled]="currentImageIndex === product.imageUrls.length - 1">Next</button>
+      <!-- Thumbnail Grid -->
+      <div class="flex justify-between">
+        <div
+          *ngFor="let image of product?.imageUrls; let i = index"
+          (click)="currentImageIndex = i"
+          class="cursor-pointer w-40 h-32 flex justify-center items-center"
+        >
+          <img
+            class="object-cover w-full h-full border bg-itemsBg p-2 rounded-md"
+            [class.border-blue-500]="i === currentImageIndex"
+            [src]="image"
+            [alt]="'Thumbnail ' + (i + 1) + ' of ' + product.name"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Product Details -->
+    <div class="lg:w-1/2">
+      <h2 class="text-3xl font-semibold mb-4">{{ product.name }}</h2>
+      <p class="text-gray-700 mb-4">{{ product.description }}</p>
+      <p class="text-lg font-medium text-gray-900 mb-4">
+        Price: ${{ product.price }}
+      </p>
+      <p class="text-lg text-gray-700 mb-6">
+        Stock: {{ product.stockQuantity }}
+      </p>
+
+      <!-- Go Back Button -->
+      <button
+        (click)="goBack()"
+        class="btn btn-primary text-white bg-blue-500 hover:bg-blue-600 px-6 py-2 rounded-lg"
+      >
+        Go Back
+      </button>
+    </div>
   </div>
-
-  <p><strong>Price: </strong>${{ product.price }}</p>
-  <p><strong>Description: </strong>{{ product.description }}</p>
-  <button (click)="goBack()">Back to Products</button>
 </section>

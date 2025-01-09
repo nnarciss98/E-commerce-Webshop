@@ -1,18 +1,76 @@
-<section class="featured-products">
-  <h2>Featured Products</h2>
-  <div class="products grid-view">
-    <div
-      class="product-card"
-      *ngFor="let product of featuredProducts"
-      [routerLink]="['/product', product.id]"
-      class="product-link">
-      <img [src]="product.imageUrls[0]" [alt]="product.name" />
-      <div class="product-details">
-        <h3 class="product-title">{{ product.name }}</h3>
-        <p class="product-price">${{ product.price.toFixed(2) }}</p>
-        <button class="product-button"
-          (click)="onBuyNow(product.id); $event.stopPropagation()">Buy Now</button>
-      </div>
+<section class="container mx-auto px-4 my-14">
+  <div class="flex items-center mb-14">
+    <div class="w-5 h-10 bg-btn rounded-md mr-4"></div>
+    <div>
+      <h2 class="text-btn text-lg font-medium">Tout les produits</h2>
     </div>
   </div>
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-7"
+  >
+    <div
+      *ngFor="let product of paginatedFeaturedProducts"
+      class="overflow-hidden transform transition-transform hover:-translate-y-1"
+    >
+      <a [routerLink]="['/product', product.id]" class="block pb-4">
+        <div class="">
+          <div class="bg-itemsBg">
+            <img
+              [src]="product.imageUrls[0]"
+              class="object-cover mx-auto rounded mb-3"
+              [alt]="product.name"
+            />
+          </div>
+          <div class="card-body">
+            <div class="flex justify-between">
+              <h5 class="text-base font-medium text-primary mb-2">
+                {{ product.name }}
+              </h5>
+              <p class="text-xs text-btn">{{ product.brand }}</p>
+            </div>
+            <p class="text-sm text-secondary">
+              {{ product.description }}
+            </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Pagination Controls -->
+  <nav class="mt-5">
+    <ul class="flex justify-center space-x-2">
+      <li>
+        <button
+          class="px-3 py-2 border rounded-md text-gray-500 hover:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed"
+          [disabled]="currentPage === 1"
+          (click)="goToPage(currentPage - 1)"
+          aria-label="Previous"
+        >
+          &laquo;
+        </button>
+      </li>
+      <li *ngFor="let page of pages">
+        <button
+          class="px-3 py-2 border rounded-md text-gray-500 hover:bg-gray-100"
+          [class.bg-blue-500]="page === currentPage"
+          [class.text-white]="page === currentPage"
+          [class.text-gray-500]="page !== currentPage"
+          (click)="goToPage(page)"
+        >
+          {{ page }}
+        </button>
+      </li>
+      <li>
+        <button
+          class="px-3 py-2 border rounded-md text-gray-500 hover:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed"
+          [disabled]="currentPage === totalPages"
+          (click)="goToPage(currentPage + 1)"
+          aria-label="Next"
+        >
+          &raquo;
+        </button>
+      </li>
+    </ul>
+  </nav>
 </section>

@@ -3,47 +3,69 @@ import { Observable, of } from 'rxjs';
 import { Category } from '../../types';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class CategoryService {
-private categories: Category[] = [
+  private categories: Category[] = [
     {
-        id: '1', name: 'Electronics', subcategories: [],
-        imageUrl: ''
+      id: '1',
+      name: 'Electronics',
+      subcategories: [],
+      imageUrl: 'assets/images/materiel-installation.png',
     },
     {
-        id: '2', name: 'Home Appliances', subcategories: [],
-        imageUrl: ''
+      id: '2',
+      name: 'Home Appliances',
+      subcategories: [],
+      imageUrl: 'assets/images/lightbulb.png',
     },
     {
-        id: '3', name: 'Books', subcategories: [],
-        imageUrl: ''
+      id: '3',
+      name: 'Books',
+      subcategories: [],
+      imageUrl: 'assets/images/green-energy.png',
     },
     {
-        id: '4', name: 'Clothing', subcategories: [],
-        imageUrl: ''
+      id: '4',
+      name: 'Clothing',
+      subcategories: [],
+      imageUrl: 'assets/images/copper-wire.png',
     },
     {
-        id: '5', name: 'Sports Equipment', subcategories: [],
-        imageUrl: ''
+      id: '5',
+      name: 'Sports Equipment',
+      subcategories: [],
+      imageUrl: 'assets/images/decentralized.png',
     },
-];
+    {
+      id: '6',
+      name: 'Sports Equipment',
+      subcategories: [],
+      imageUrl: 'assets/images/electrical-panel.png',
+    },
+    {
+      id: '7',
+      name: 'Sports Equipment',
+      subcategories: [],
+      imageUrl: 'assets/images/smart-city.png',
+    },
+  ];
 
-constructor() {}
+  constructor() {}
 
-getAllCategories(): Observable<Category[]> {
+  getAllCategories(): Observable<Category[]> {
     return of(this.categories);
-}
+  }
 
-getCategoryById(categoryId: string): Observable<Category | undefined> {
+  getCategoryById(categoryId: string): Observable<Category | undefined> {
     const category = this.categories.find((c) => c.id === categoryId);
     return of(category);
-}
+  }
 
-getCategoriesByParentId(parentCategoryId: string): Observable<Category[]> {
+  getCategoriesByParentId(parentCategoryId: string): Observable<Category[]> {
     const subcategories = this.categories.filter(
-    (c) => c.parentCategoryId === parentCategoryId
+      (c) => c.parentCategoryId === parentCategoryId
     );
     return of(subcategories);
-}
+  }
 }

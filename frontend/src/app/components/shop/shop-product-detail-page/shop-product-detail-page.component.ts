@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';  // Import ActivatedRoute to get the URL parameter
-import { ProductService } from '../services/product.service';  // Service to fetch product details
+import { ActivatedRoute } from '@angular/router';
+import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
 import { Product } from '../../types';
 import { CommonModule } from '@angular/common';
@@ -10,59 +10,77 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './shop-product-detail-page.component.html',
-  styleUrl: './shop-product-detail-page.component.css'
+  styleUrls: ['./shop-product-detail-page.component.css'],
 })
 export class ShopProductDetailPageComponent implements OnInit {
-  productId: string | null = '';
-  product: Product | undefined;  // Product object to hold the details
-  currentImageIndex: number = 0;  // Index for the current image in the carousel
+  productId: string | null = null; // Explicit null initialization
+  product: Product | undefined; // Product object
+  currentImageIndex: number = 0; // Index for image carousel
 
   constructor(
-    private route: ActivatedRoute,  // To access route parameters
-    private productService: ProductService,  // Service to get the product details
+    private route: ActivatedRoute,
+    private productService: ProductService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    // Fetch product ID from the route
     this.productId = this.route.snapshot.paramMap.get('id');
 
-    // Fetch the product details using the product ID
     if (this.productId) {
-      this.productService.getProductById(this.productId).subscribe((data) => {
-        if (this.productId) {
-          this.productService.getProductById(this.productId).subscribe((data) => {
-            this.product = data; // Set product data to the component's product property
-            
-            // Add placeholder images if `imageUrls` is empty or undefined
-            if (this.product?.imageUrls || this.product?.imageUrls.length === 0) {
-              this.product.imageUrls = [
-                `https://via.placeholder.com/200x150?text=${encodeURIComponent(this.product.name)}+Image1`,
-                `https://via.placeholder.com/200x150?text=${encodeURIComponent(this.product.name)}+Image2`
-              ];
-            }
-          });
-        }
+      // Retrieve product data using the ProductService
+      this.productService.getProductById(this.productId).subscribe({
+        next: (data) => {
+          this.product = data;
+
+          // Handle missing image URLs by providing a default image
+          if (
+            this.product &&
+            (!this.product.imageUrls || this.product.imageUrls.length === 0)
+          ) {
+            this.product.imageUrls = [
+              `https://via.placeholder.com/600x400?text=${encodeURIComponent(
+                this.product.name || 'No Image'
+              )}`,
+            ];
+          }
+        },
+        error: (err) => {
+          console.error('Error fetching product:', err);
+          this.router.navigate(['/shop']); // Redirect to shop in case of an error
+        },
       });
+    } else {
+      // Redirect to the shop if no product ID is found
+      this.router.navigate(['/shop']);
     }
   }
 
-  // Navigate to the previous image in the carousel
+  /**
+   * Navigate to the previous image in the product's image carousel.
+   */
   prevImage(): void {
-    if (this.product && this.currentImageIndex > 0) {
-      this.currentImageIndex--;
+    if (this.product?.imageUrls?.length) {
+      this.currentImageIndex =
+        (this.currentImageIndex - 1 + this.product.imageUrls.length) %
+        this.product.imageUrls.length;
     }
   }
 
-  // Navigate to the next image in the carousel
+  /**
+   * Navigate to the next image in the product's image carousel.
+   */
   nextImage(): void {
-    if (this.product && this.currentImageIndex < (this.product.imageUrls.length - 1)) {
-      this.currentImageIndex++;
+    if (this.product?.imageUrls?.length) {
+      this.currentImageIndex =
+        (this.currentImageIndex + 1) % this.product.imageUrls.length;
     }
   }
 
-  // Navigate back to the product list
+  /**
+   * Navigate back to the shop page.
+   */
   goBack(): void {
-    this.router.navigate(['/shop']); // Redirects to the homepage
+    this.router.navigate(['/shop']);
   }
-
 }
