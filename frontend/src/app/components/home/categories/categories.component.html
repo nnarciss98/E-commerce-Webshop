@@ -1,23 +1,36 @@
-<div class="container mx-auto px-5 pt-5 mb-14">
+<div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-10">
   <!-- Section Title -->
   <div class="flex items-center mb-14">
     <div class="w-5 h-10 bg-btn rounded-md mr-4"></div>
     <div>
-      <h2 class="text-btn text-lg font-medium">Categories</h2>
+      <h2 class="text-btn lg:text-3xl md:text-xl font-semibold">
+        Nos categories du moment
+      </h2>
     </div>
   </div>
-  <div class="container flex justify-between gap-4">
+  <div class="container grid grid-cols-2 lg:grid-cols-5 gap-8">
     <div *ngFor="let category of categories">
-      <a routerLink="/link">
-        <div
-          class="border border-1 rounded-md px-5 w-44 h-36 text-center flex flex-col justify-center items-center overflow-hidden transform transition-transform hover:-translate-y-1"
-        >
-          <img [src]="category.image" [alt]="category.name" class="mb-3" />
-          <p class="text-primary text-sm">
-            {{ category.name }}
-          </p>
+      <div
+        class="max-w-sm bg-white border border-gray-200 rounded-lg overflow-hidden transform transition-transform hover:-translate-y-1"
+      >
+        <a routerLink="category.link">
+          <img
+            class="rounded-t-lg object-cover"
+            [src]="category.image"
+            [alt]="category.name"
+          />
+        </a>
+        <div class="p-2">
+          <a href="#">
+            <h5 class="mb-2 text-primary font-semibold tracking-tight">
+              {{ category.name }}
+            </h5>
+          </a>
+          <!-- <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+            {{ category.description }}
+          </p> -->
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </div>

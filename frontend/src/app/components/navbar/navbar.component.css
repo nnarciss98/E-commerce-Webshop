@@ -1,24 +1,29 @@
-.nav-item {
-  border-radius: 50px; /* Apply rounded corners */
-}
-.nav-item:hover {
-  background-color: #ff9400;
-  transition: background-color 0.3s;
-}
 .nav-link {
-  transition: color 0.3s;
-}
-.nav-item .nav-link {
-  font-weight: 500;
+  position: relative;
+  text-decoration: none;
 }
 
-.nav-btn {
-  font-weight: 500;
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: #56a41d;
+  transition: width 0.3s ease;
 }
 
-.form-control:focus {
-  background-color: #f9f9f9; /* Custom background color on focus */
-  border-color: #6c757d; /* Custom border color on focus */
-  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.25); /* Custom shadow */
-  outline: none; /* Removes default outline */
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Default styling for the images */
+.svg-icon {
+  transition: filter 0.3s ease;
+}
+
+/* Hover effect on the <li> to change the SVG image color */
+.category-item:hover .svg-icon {
+  filter: invert(25%) sepia(80%) saturate(600%) hue-rotate(85deg); /* This will give a greenish tint, adjust further if necessary */
 }

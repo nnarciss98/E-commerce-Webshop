@@ -2,6 +2,7 @@
 module.exports = {
   content: [
     "./src/**/*.{html,ts}", // Adjust paths based on your project
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     extend: {
@@ -19,8 +20,12 @@ module.exports = {
         itemsBg: {
           DEFAULT: "#F5F5F5",
         },
+        green: {
+          DEFAULT: "#85C612",
+          darker: "#56A41D",
+        },
       },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
 };
