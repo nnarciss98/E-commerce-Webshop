@@ -1,45 +1,152 @@
-<div
-  class="px-4 mb-5 text-center h-[75vh] flex justify-center items-center flex-col relative overflow-hidden"
->
-  <!-- Background Video -->
-  <img
-    class="absolute inset-0 w-full h-full object-cover object-bottom"
-    src="assets/images/shop-hero-banner-img.jpg"
-  />
-
-  <!-- Content Overlay -->
-  <div class="relative z-10 text-center">
-    <h1 class="text-4xl font-semibold mb-7 text-slate-100">
-      Bienvenue chez Onis-Mati
-    </h1>
-    <div class="col-lg-6 mx-auto flex justify-center items-center flex-col">
-      <p class="text-lg mb-7 lg:w-[65%] text-slate-200">
-        Chez Onis-Mati, nous vous accompagnons pour transformer vos idées en
-        projets concrets avec des solutions innovantes et adaptées à vos
-        besoins. Notre expertise couvre une gamme complète de services allant de
-        la conception web à l’intégration de solutions technologiques avancées.
+<section class="bg-itemsBg">
+  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-10">
+    <div class="bg-white border border-gray-200 rounded-lg p-8 md:p-12 mb-8">
+      <div
+        class="bg-[#FFDC99] text-btn-hover text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2"
+      >
+        <svg
+          class="w-2.5 h-2.5 me-1.5"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#EA580C"
+          viewBox="0 0 20 14"
+        >
+          <path
+            d="M11 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm8.585 1.189a.994.994 0 0 0-.9-.138l-2.965.983a1 1 0 0 0-.685.949v8a1 1 0 0 0 .675.946l2.965 1.02a1.013 1.013 0 0 0 1.032-.242A1 1 0 0 0 20 12V2a1 1 0 0 0-.415-.811Z"
+          />
+        </svg>
+        Nos services
+      </div>
+      <h1 class="text-primary text-3xl md:text-5xl font-bold mb-2">
+        Votre partenaire en électricité, pour des solutions fiables et durables
+      </h1>
+      <p class="text-lg font-normal text-secondary mb-6">
+        Nous proposons des services électriques adaptés à vos besoins, que ce
+        soit pour des projets résidentiels, commerciaux ou industriels.
       </p>
-
-      <div class="grid gap-2 sm:flex justify-center mb-7">
-        <button
-          type="button"
-          class="btn bg-red-600 text-white px-4 sm:mr-3 py-2 rounded-md"
+      <a
+        routerLink="/about-us"
+        class="font-medium text-lg inline-flex items-center nav-link"
+      >
+        En savoir plus
+        <svg
+          class="w-3.5 h-3.5 ms-2 rtl:rotate-180"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 10"
         >
-          Découvrez Nos Offres
-        </button>
-        <button
-          type="button"
-          class="btn bg-white text-primary px-4 py-2 rounded-md border border-gray-300"
+          <path
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 5h12m0 0L9 1m4 4L9 9"
+          />
+        </svg>
+      </a>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div
+        class="bg-white border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12"
+      >
+        <div
+          class="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2"
         >
-          Voir projets
-        </button>
+          <svg
+            class="w-2.5 h-2.5 me-1.5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 18 18"
+          >
+            <path
+              d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z"
+            />
+          </svg>
+          Nos projets
+        </div>
+        <h2 class="text-primary text-3xl font-bold mb-2">
+          Des projets qui font la différence
+        </h2>
+        <p class="text-lg font-normal text-secondary mb-4">
+          Découvrez notre portefeuille de projets réussis, qui témoignent de
+          notre expertise dans le domaine électrique, de l'installation à la
+          maintenance.
+        </p>
+        <a
+          routerLink="/projects"
+          class="font-medium text-lg inline-flex items-center nav-link"
+          >En savoir plus
+          <svg
+            class="w-3.5 h-3.5 ms-2 rtl:rotate-180"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class="bg-white border border-gray-200 rounded-lg p-8 md:p-12">
+        <div
+          class="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-2"
+        >
+          <svg
+            class="w-2.5 h-2.5 me-1.5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 16"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"
+            />
+          </svg>
+          Nos catalogues
+        </div>
+        <h2 class="text-primary text-3xl font-extrabold mb-2">
+          Découvrez nos produits et solutions électriques
+        </h2>
+        <p class="text-lg font-normal text-secondary dark:text-gray-400 mb-4">
+          Accédez à notre catalogue de produits et solutions électriques,
+          soigneusement sélectionnés pour répondre à vos besoins spécifiques.
+        </p>
+        <a
+          href="#"
+          class="font-medium text-lg inline-flex items-center nav-link"
+          >En savoir plus
+          <svg
+            class="w-3.5 h-3.5 ms-2 rtl:rotate-180"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 10"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M1 5h12m0 0L9 1m4 4L9 9"
+            />
+          </svg>
+        </a>
       </div>
     </div>
   </div>
-
-  <!-- Optional Overlay for darkening video -->
-  <div class="absolute inset-0 bg-black/30"></div>
-</div>
+</section>
 
 <app-categories></app-categories>
 <app-partenaires></app-partenaires>
