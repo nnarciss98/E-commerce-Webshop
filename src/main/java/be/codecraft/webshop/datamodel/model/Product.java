@@ -38,6 +38,8 @@ public class Product {
 
     private Integer stockQuantity;
 
+    private List<Integer> ratings;
+
     @ElementCollection
     @CollectionTable(name = "product_images", joinColumns = @JoinColumn(name = "product_id"))
     private List<String> imageUrls = new ArrayList<>();
