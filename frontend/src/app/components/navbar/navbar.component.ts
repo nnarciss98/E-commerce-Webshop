@@ -28,3 +28,5 @@ export class NavbarComponent implements OnInit {
     this.isNavbarOpen = !this.isNavbarOpen;
   }
 }
+
+//  [ngClass]="{ hidden: !isNavbarOpen, flex: isNavbarOpen }"
