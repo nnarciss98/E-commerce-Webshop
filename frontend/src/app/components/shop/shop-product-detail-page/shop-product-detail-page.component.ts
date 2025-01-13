@@ -4,11 +4,13 @@ import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
 import { Product } from '../../types';
 import { CommonModule } from '@angular/common';
+import { RatingComponent } from '../../rating/rating.component';
+import { QuantitySelectorComponent } from '../quantity-selector/quantity-selector.component';
 
 @Component({
   selector: 'app-shop-product-detail-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RatingComponent, QuantitySelectorComponent],
   templateUrl: './shop-product-detail-page.component.html',
   styleUrls: ['./shop-product-detail-page.component.css'],
 })
@@ -80,7 +82,19 @@ export class ShopProductDetailPageComponent implements OnInit {
   /**
    * Navigate back to the shop page.
    */
-  goBack(): void {
-    this.router.navigate(['/shop']);
+  // goBack(): void {
+  //   this.router.navigate(['/shop']);
+  // }
+
+  onRatingChange(newRating: number): void {
+    console.log('New rating:', newRating);
+    // Optionally, save the rating to a server or update the product data
+  }
+
+  // For quantity selector
+  initialQuantity = 1;
+
+  onQuantityChange(newQuantity: number): void {
+    console.log('New Quantity:', newQuantity);
   }
 }

@@ -15,4 +15,5 @@ export interface Product {
   categoryId: string;
   imageUrls: string[];
   brand: string;
+  rating?: number; // Average rating (0 to 5)
 }
