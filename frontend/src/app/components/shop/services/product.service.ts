@@ -17,6 +17,7 @@ export class ProductService {
       categoryId: '1',
       imageUrls: ['assets/images/perceuse.png'],
       brand: 'ToolPro',
+      rating: 4.5,
     },
     {
       id: '102',
@@ -33,6 +34,7 @@ export class ProductService {
         'assets/images/perceuse.png',
       ],
       brand: 'GrindMaster',
+      rating: 4.5,
     },
     {
       id: '103',
@@ -43,6 +45,7 @@ export class ProductService {
       categoryId: '1',
       imageUrls: ['assets/images/scie.png'],
       brand: 'MixItUp',
+      rating: 4.5,
     },
     {
       id: '104',
