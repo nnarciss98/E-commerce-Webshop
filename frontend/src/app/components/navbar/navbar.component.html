@@ -344,25 +344,27 @@
     </div>
   </div>
   <div class="flex items-center justify-between bg-itemsBg rounded-t-3xl py-5">
-    <!-- Mobile Toggle -->
+    <!-- Mobile Toggle for navbar menu -->
     <button
       class="md:hidden text-gray-700 focus:outline-none"
       aria-label="Toggle navigation"
       (click)="toggleNavbar()"
     >
+      <span class="sr-only">Open main menu</span>
       <svg
-        class="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+        class="w-5 h-5"
+        aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 17 14"
       >
         <path
+          stroke="currentColor"
           stroke-linecap="round"
           stroke-linejoin="round"
           stroke-width="2"
-          d="M4 6h16M4 12h16m-7 6h7"
-        ></path>
+          d="M1 1h15M1 7h15M1 13h15"
+        />
       </svg>
     </button>
 
@@ -372,6 +374,7 @@
       class="hidden md:flex w-full items-center justify-betweenpy-8 px-4 mx-auto max-w-screen-xl"
     >
       <ul class="flex flex-col md:flex-row items-center md:space-x-10">
+        <!-- Dropdown menu for categories -->
         <button
           id="dropdownUsersButton"
           data-dropdown-toggle="dropdownUsers"
@@ -396,7 +399,7 @@
             />
           </svg>
         </button>
-        <!-- Dropdown menu -->
+
         <div
           id="dropdownUsers"
           class="z-50 hidden bg-white rounded-lg shadow w-80"
@@ -417,6 +420,7 @@
             </li>
           </ul>
         </div>
+        <!--End Dropdown menu for categories -->
 
         <li class="">
           <a routerLink="/" class="text-primary font-medium nav-link"> Home </a>
