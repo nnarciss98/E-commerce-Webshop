@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CategoriesComponent } from '../home/categories/categories.component';
 import { PartenairesComponent } from '../home/partenaires/partenaires.component';
 import { RouterModule } from '@angular/router'; // <-- Import RouterModule
-import { ShopFeaturedProductsComponent } from '../shop/shop-featured-products/shop-featured-products.component';
+import { ShopMainPageComponent } from '../shop/shop-main-page/shop-main-page.component';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +12,8 @@ import { ShopFeaturedProductsComponent } from '../shop/shop-featured-products/sh
     CommonModule,
     CategoriesComponent,
     PartenairesComponent,
+    ShopMainPageComponent,
     RouterModule,
-    ShopFeaturedProductsComponent,
   ], // <-- Ensure RouterModule is in the imports array
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
