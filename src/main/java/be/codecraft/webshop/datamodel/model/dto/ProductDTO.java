@@ -19,4 +19,6 @@ public class ProductDTO {
     private Integer stockQuantity;
     private UUID categoryId;
     private List<String> imageUrls;
+    private String category;
+    private Double rating;
 }

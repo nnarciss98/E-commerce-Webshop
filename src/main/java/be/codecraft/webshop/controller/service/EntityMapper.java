@@ -35,7 +35,12 @@ public class EntityMapper {
                 product.getDescription(),
                 product.getStockQuantity(),
                 product.getCategory().getId(),
-                product.getImageUrls()
+                product.getImageUrls(),
+                product.getCategory().getName(),
+                Math.round(product.getRatings().stream()
+                        .mapToInt(Integer::intValue)
+                        .average()
+                        .orElse(0.0) * 10) / 10.0 //Get the average rating and round it at 1 decimal
         );
     }
 
@@ -46,6 +51,7 @@ public class EntityMapper {
         product.setDescription(productDTO.getDescription());
         product.setStockQuantity(productDTO.getStockQuantity());
         product.setImageUrls(productDTO.getImageUrls());
+        product.setCategory(categoryRepository.findByName(productDTO.getCategory()));
         return product;
     }
 

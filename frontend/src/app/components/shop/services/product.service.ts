@@ -16,7 +16,7 @@ export class ProductService {
       stockQuantity: 50,
       categoryId: '1',
       imageUrls: ['assets/images/perceuse.png'],
-      brand: 'ToolPro',
+      category: 'ToolPro',
       rating: 4.5,
     },
     {
@@ -33,7 +33,7 @@ export class ProductService {
         'assets/images/scie.png',
         'assets/images/perceuse.png',
       ],
-      brand: 'GrindMaster',
+      category: 'GrindMaster',
       rating: 4.5,
     },
     {
@@ -44,7 +44,7 @@ export class ProductService {
       stockQuantity: 20,
       categoryId: '1',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'MixItUp',
+      category: 'MixItUp',
       rating: 4.5,
     },
     {
@@ -56,7 +56,7 @@ export class ProductService {
       stockQuantity: 80,
       categoryId: '1',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'LevelPro',
+      category: 'LevelPro',
     },
     {
       id: '105',
@@ -67,7 +67,7 @@ export class ProductService {
       stockQuantity: 100,
       categoryId: '1',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'WeldTech',
+      category: 'WeldTech',
     },
     {
       id: '201',
@@ -78,7 +78,7 @@ export class ProductService {
       stockQuantity: 15,
       categoryId: '2',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'PowerGo',
+      category: 'PowerGo',
     },
     {
       id: '202',
@@ -89,7 +89,7 @@ export class ProductService {
       stockQuantity: 25,
       categoryId: '2',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'AirPro',
+      category: 'AirPro',
     },
     {
       id: '203',
@@ -100,7 +100,7 @@ export class ProductService {
       stockQuantity: 10,
       categoryId: '2',
       imageUrls: ['assets/images/perceuse.png'],
-      brand: 'SanderMax',
+      category: 'SanderMax',
     },
     {
       id: '204',
@@ -111,7 +111,7 @@ export class ProductService {
       stockQuantity: 35,
       categoryId: '2',
       imageUrls: ['assets/images/perceuse.png'],
-      brand: 'CleanSweep',
+      category: 'CleanSweep',
     },
     {
       id: '205',
@@ -122,7 +122,7 @@ export class ProductService {
       stockQuantity: 50,
       categoryId: '2',
       imageUrls: ['assets/images/perceuse.png'],
-      brand: 'PureAir',
+      category: 'PureAir',
     },
     {
       id: '301',
@@ -132,7 +132,7 @@ export class ProductService {
       stockQuantity: 100,
       categoryId: '3',
       imageUrls: ['assets/images/perceuse.png'],
-      brand: 'SafeGear',
+      category: 'SafeGear',
     },
     {
       id: '302',
@@ -142,7 +142,7 @@ export class ProductService {
       stockQuantity: 60,
       categoryId: '3',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'ProtectHead',
+      category: 'ProtectHead',
     },
     {
       id: '303',
@@ -153,7 +153,7 @@ export class ProductService {
       stockQuantity: 40,
       categoryId: '3',
       imageUrls: ['assets/images/perceuse.png'],
-      brand: 'HandGuard',
+      category: 'HandGuard',
     },
     {
       id: '304',
@@ -164,7 +164,7 @@ export class ProductService {
       stockQuantity: 20,
       categoryId: '3',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'SteelToe',
+      category: 'SteelToe',
     },
     {
       id: '305',
@@ -175,7 +175,7 @@ export class ProductService {
       stockQuantity: 70,
       categoryId: '3',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'ClearVision',
+      category: 'ClearVision',
     },
     {
       id: '401',
@@ -186,7 +186,7 @@ export class ProductService {
       stockQuantity: 30,
       categoryId: '4',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'HammerPro',
+      category: 'HammerPro',
     },
     {
       id: '402',
@@ -196,7 +196,7 @@ export class ProductService {
       stockQuantity: 25,
       categoryId: '4',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'CutMaster',
+      category: 'CutMaster',
     },
     {
       id: '403',
@@ -207,7 +207,7 @@ export class ProductService {
       stockQuantity: 15,
       categoryId: '4',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'NailFast',
+      category: 'NailFast',
     },
     {
       id: '404',
@@ -217,7 +217,7 @@ export class ProductService {
       stockQuantity: 10,
       categoryId: '4',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'SkyBuild',
+      category: 'SkyBuild',
     },
     {
       id: '405',
@@ -228,7 +228,7 @@ export class ProductService {
       stockQuantity: 200,
       categoryId: '4',
       imageUrls: ['assets/images/scie.png'],
-      brand: 'ToolBoxPro',
+      category: 'ToolBoxPro',
     },
   ];
 

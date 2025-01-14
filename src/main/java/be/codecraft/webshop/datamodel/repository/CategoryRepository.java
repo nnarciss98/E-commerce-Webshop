@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface CategoryRepository extends JpaRepository<Category, UUID> {
 
     List<Category> findByParentCategoryId(UUID parentCategoryId);
+    Category findByName(String name);
 }
