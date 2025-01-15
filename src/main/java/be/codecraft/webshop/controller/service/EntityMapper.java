@@ -63,7 +63,11 @@ public class EntityMapper {
         return OrderDTO.builder()
                 .id(order.getId())
                 .userEmail(order.getUser() != null ? order.getUser().getEmail() : null)
-                .items(order.getItems() != null ? new ArrayList<>(order.getItems()) : new ArrayList<>())
+                .items(order.getItems() != null
+                        ? order.getItems().stream()
+                        .map(this::convertOrderItemToDTO)
+                        .toList()
+                        : new ArrayList<>())
                 .totalPrice(order.getTotalPrice())
                 .orderStatus(order.getOrderStatus())
                 .createdAt(order.getCreatedAt())
@@ -78,7 +82,11 @@ public class EntityMapper {
 
         Order order = Order.builder()
                 .id(orderDTO.getId())
-                .items(orderDTO.getItems() != null ? new ArrayList<>(orderDTO.getItems()) : new ArrayList<>())
+                .items(orderDTO.getItems() != null
+                        ? orderDTO.getItems().stream()
+                        .map(this::convertOrderItemToEntity)
+                        .toList()
+                        : new ArrayList<>())
                 .totalPrice(orderDTO.getTotalPrice())
                 .orderStatus(orderDTO.getOrderStatus())
                 .createdAt(orderDTO.getCreatedAt() != null ? orderDTO.getCreatedAt() : new Date())
@@ -92,6 +100,36 @@ public class EntityMapper {
         }
 
         return order;
+    }
+
+    public OrderItemDTO convertOrderItemToDTO(OrderItem orderItem) {
+        if (orderItem == null) {
+            return null;
+        }
+
+        return OrderItemDTO.builder()
+                .orderId(orderItem.getOrderId())
+                .productId(orderItem.getProductId())
+                .quantity(orderItem.getQuantity())
+                .price(orderItem.getPrice())
+                .build();
+    }
+
+    public OrderItem convertOrderItemToEntity(OrderItemDTO orderItemDTO) {
+        if (orderItemDTO == null) {
+            return null;
+        }
+
+        OrderItem orderItem = OrderItem.builder()
+                .orderId(orderItemDTO.getOrderId())
+                .productId(orderItemDTO.getProductId())
+                .product(productRepository.findById(orderItemDTO.getProductId()).orElse(null))
+                .quantity(orderItemDTO.getQuantity())
+                .price(orderItemDTO.getPrice())
+                .build();
+
+        productRepository.findById(orderItemDTO.getProductId()).ifPresent(orderItem::setProduct);
+        return orderItem;
     }
 
     public ReviewDTO convertReviewToDTO(Review review) {

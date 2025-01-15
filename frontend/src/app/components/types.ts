@@ -17,3 +17,53 @@ export interface Product {
   category: string;
   rating?: number; // Average rating (0 to 5)
 }
+
+export interface Cart {
+  id: string;
+  userEmail: string;
+  totalPrice: number;
+  items: CartItems[];
+}
+
+export interface CartItems {
+  productId;
+  cartId: string;
+  productName: string;
+  productPrice: number;
+  quantity: number;
+  price: number;
+}
+
+export interface Order {
+  id: string;
+  userEmail: string;
+  items: OrderItem[];
+  totalPrice: string;
+  orderStatus: OrderStatus;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface OrderItem {
+  orderId: string;
+  productId: string;
+  quantity: number;
+  price: string;
+}
+
+export interface ReviewDTO {
+  id: string;
+  productId: string;
+  userEmail: string;
+  rating: number;
+  comment: string;
+  createdAt: Date; 
+}
+
+
+export enum OrderStatus {
+  PENDING = 'PENDING',
+  SHIPPED = 'SHIPPED',
+  DELIVERED = 'DELIVERED',
+  CANCELED = 'CANCELED',
+}
