@@ -16,7 +16,7 @@ export class ProductService {
       stockQuantity: 50,
       categoryId: '1',
       imageUrls: ['assets/images/perceuse.png'],
-      category: 'ToolPro',
+      category: ['ToolPro', "Matériel d'installation"],
       rating: 4.5,
     },
     {
@@ -33,7 +33,7 @@ export class ProductService {
         'assets/images/scie.png',
         'assets/images/perceuse.png',
       ],
-      category: 'GrindMaster',
+      category: ['GrindMaster', "Matériel d'installation"],
       rating: 4.5,
     },
     {
@@ -44,7 +44,7 @@ export class ProductService {
       stockQuantity: 20,
       categoryId: '1',
       imageUrls: ['assets/images/scie.png'],
-      category: 'MixItUp',
+      category: ['MixItUp', "Matériel d'installation"],
       rating: 4.5,
     },
     {
@@ -56,7 +56,7 @@ export class ProductService {
       stockQuantity: 80,
       categoryId: '1',
       imageUrls: ['assets/images/scie.png'],
-      category: 'LevelPro',
+      category: ['LevelPro', 'Energie renouvelable '],
     },
     {
       id: '105',
@@ -67,7 +67,7 @@ export class ProductService {
       stockQuantity: 100,
       categoryId: '1',
       imageUrls: ['assets/images/scie.png'],
-      category: 'WeldTech',
+      category: ['WeldTech', 'Energie renouvelable '],
     },
     {
       id: '201',
@@ -78,7 +78,7 @@ export class ProductService {
       stockQuantity: 15,
       categoryId: '2',
       imageUrls: ['assets/images/scie.png'],
-      category: 'PowerGo',
+      category: ['PowerGo', 'Energie renouvelable '],
     },
     {
       id: '202',
@@ -89,7 +89,7 @@ export class ProductService {
       stockQuantity: 25,
       categoryId: '2',
       imageUrls: ['assets/images/scie.png'],
-      category: 'AirPro',
+      category: ['AirPro', 'Energie renouvelable '],
     },
     {
       id: '203',
@@ -100,7 +100,7 @@ export class ProductService {
       stockQuantity: 10,
       categoryId: '2',
       imageUrls: ['assets/images/perceuse.png'],
-      category: 'SanderMax',
+      category: ['SanderMax', 'Cheminement de câbles '],
     },
     {
       id: '204',
@@ -111,7 +111,7 @@ export class ProductService {
       stockQuantity: 35,
       categoryId: '2',
       imageUrls: ['assets/images/perceuse.png'],
-      category: 'CleanSweep',
+      category: ['CleanSweep', 'Cheminement de câbles '],
     },
     {
       id: '205',
@@ -122,7 +122,7 @@ export class ProductService {
       stockQuantity: 50,
       categoryId: '2',
       imageUrls: ['assets/images/perceuse.png'],
-      category: 'PureAir',
+      category: ['CleanSweep', 'Cheminement de câbles '],
     },
     {
       id: '301',
@@ -132,7 +132,7 @@ export class ProductService {
       stockQuantity: 100,
       categoryId: '3',
       imageUrls: ['assets/images/perceuse.png'],
-      category: 'SafeGear',
+      category: ['CleanSweep', 'Outillage '],
     },
     {
       id: '302',
@@ -142,7 +142,7 @@ export class ProductService {
       stockQuantity: 60,
       categoryId: '3',
       imageUrls: ['assets/images/scie.png'],
-      category: 'ProtectHead',
+      category: ['CleanSweep', 'Outillage '],
     },
     {
       id: '303',
@@ -153,7 +153,7 @@ export class ProductService {
       stockQuantity: 40,
       categoryId: '3',
       imageUrls: ['assets/images/perceuse.png'],
-      category: 'HandGuard',
+      category: ['HandGuard', 'Outillage '],
     },
     {
       id: '304',
@@ -164,7 +164,7 @@ export class ProductService {
       stockQuantity: 20,
       categoryId: '3',
       imageUrls: ['assets/images/scie.png'],
-      category: 'SteelToe',
+      category: ['HandGuard', 'Outillage '],
     },
     {
       id: '305',
@@ -175,7 +175,7 @@ export class ProductService {
       stockQuantity: 70,
       categoryId: '3',
       imageUrls: ['assets/images/scie.png'],
-      category: 'ClearVision',
+      category: ['HandGuard', 'HVAC '],
     },
     {
       id: '401',
@@ -186,7 +186,7 @@ export class ProductService {
       stockQuantity: 30,
       categoryId: '4',
       imageUrls: ['assets/images/scie.png'],
-      category: 'HammerPro',
+      category: ['HandGuard', 'HVAC '],
     },
     {
       id: '402',
@@ -196,7 +196,7 @@ export class ProductService {
       stockQuantity: 25,
       categoryId: '4',
       imageUrls: ['assets/images/scie.png'],
-      category: 'CutMaster',
+      category: ['HandGuard', 'HVAC '],
     },
     {
       id: '403',
@@ -207,7 +207,7 @@ export class ProductService {
       stockQuantity: 15,
       categoryId: '4',
       imageUrls: ['assets/images/scie.png'],
-      category: 'NailFast',
+      category: ['HandGuard', 'HVAC '],
     },
     {
       id: '404',
@@ -217,7 +217,7 @@ export class ProductService {
       stockQuantity: 10,
       categoryId: '4',
       imageUrls: ['assets/images/scie.png'],
-      category: 'SkyBuild',
+      category: ['SkyBuild', 'Data & Telecom '],
     },
     {
       id: '405',
@@ -228,7 +228,7 @@ export class ProductService {
       stockQuantity: 200,
       categoryId: '4',
       imageUrls: ['assets/images/scie.png'],
-      category: 'ToolBoxPro',
+      category: ['SkyBuild', 'Data & Telecom '],
     },
   ];
 
@@ -250,8 +250,11 @@ export class ProductService {
     return of(product);
   }
 
+  // New method: Filter products by categoryId
   getProductsByCategoryId(categoryId: string): Observable<Product[]> {
-    const products = this.products.filter((p) => p.categoryId === categoryId);
+    const products = this.products.filter(
+      (product) => product.categoryId === categoryId
+    );
     return of(products);
   }
 }
