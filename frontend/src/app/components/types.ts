@@ -14,6 +14,6 @@ export interface Product {
   stockQuantity: number;
   categoryId: string;
   imageUrls: string[];
-  category: string;
+  category: string[];
   rating?: number; // Average rating (0 to 5)
 }
