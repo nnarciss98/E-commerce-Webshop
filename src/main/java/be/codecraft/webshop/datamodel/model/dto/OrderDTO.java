@@ -1,6 +1,5 @@
 package be.codecraft.webshop.datamodel.model.dto;
 
-import be.codecraft.webshop.datamodel.model.OrderItem;
 import be.codecraft.webshop.datamodel.model.OrderStatus;
 import lombok.*;
 
@@ -18,7 +17,7 @@ public class OrderDTO {
 
     private UUID id;
     private String userEmail;
-    private List<OrderItem> items = new ArrayList<>();
+    private List<OrderItemDTO> items = new ArrayList<>();
     private BigDecimal totalPrice;
     private OrderStatus orderStatus;
     private Date createdAt;
