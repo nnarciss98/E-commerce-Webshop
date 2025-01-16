@@ -1,16 +1,24 @@
-<!-- <div class="max-h-[40vh] object-contain">
-  <img [src]="category?.imageUrl" alt="" />
-</div> -->
-<section class="py-8 px-4 mx-auto max-w-screen-xl lg:py-10">
-  <!-- Category Header -->
-  <div class="flex items-center mb-14">
-    <div>
-      <h2 class="text-primary lg:text-3xl md:text-xl font-semibold">
-        Tous les produits pour la catégorie {{ category?.name }}
-      </h2>
-    </div>
+<div class="h-[78vh] flex flex-col md:flex-row w-full">
+  <!-- Image Section (60% of width on md and larger, full width on smaller screens) -->
+  <div class="h-full md:w-3/5 w-full">
+    <img
+      [src]="category?.imageUrl"
+      alt=""
+      class="h-full w-full object-cover object-center"
+    />
   </div>
 
+  <!-- Text Section (40% of width on md and larger, full width on smaller screens) -->
+  <div class="h-full md:w-2/5 w-full flex items-center justify-center">
+    <h2
+      class="text-primary lg:text-5xl md:text-3xl text-2xl font-semibold text-center px-8"
+    >
+      {{ category?.name }}
+    </h2>
+  </div>
+</div>
+
+<section class="py-8 px-4 mx-auto max-w-screen-xl lg:py-10">
   <!-- Products List -->
   <div
     *ngIf="products.length; else noProducts"
