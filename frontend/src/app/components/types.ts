@@ -26,7 +26,7 @@ export interface Cart {
 }
 
 export interface CartItems {
-  productId;
+  productId: string;
   cartId: string;
   productName: string;
   productPrice: number;
