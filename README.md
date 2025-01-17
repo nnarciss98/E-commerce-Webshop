@@ -2,6 +2,7 @@
 
 A robust and modular Webshop application built with **Spring Boot/Angular**. The application supports various e-commerce functionalities, including user management, category management, address handling, and a hierarchical category structure.
 
+Latest deployed version: https://codecraft-webshop-project.netlify.app/
 ---
 
 ## Features
