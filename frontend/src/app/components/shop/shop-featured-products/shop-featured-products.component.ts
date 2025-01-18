@@ -3,11 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Product } from '../../types';
 import { ProductService } from '../services/product.service';
-import { HttpTestComponent } from '../services/http.test.component';
 
 @Component({
     selector: 'shop-featured-products',
-    imports: [CommonModule, RouterModule, HttpTestComponent],
+    imports: [CommonModule, RouterModule],
     templateUrl: './shop-featured-products.component.html',
     styleUrl: './shop-featured-products.component.css'
 })
