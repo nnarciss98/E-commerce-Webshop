@@ -1,25 +1,65 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';  
+import {
+  HttpClient,
+  HttpClientModule,
+  HttpHeaders,
+} from '@angular/common/http'; // Correct import of HttpClient
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import emailjs from '@emailjs/browser';
+
+interface ContactForm {
+  name: string;
+  email: string;
+  message: string;
+  phone: string;
+}
 
 @Component({
-    selector: 'app-contact',
-    imports: [CommonModule, FormsModule],
-    templateUrl: './contact.component.html',
-    styleUrl: './contact.component.css'
+  selector: 'app-contact',
+  standalone: true,
+  imports: [CommonModule, HttpClientModule, FormsModule],
+  templateUrl: './contact.component.html',
+  styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent {
-  contactFormModel = {
+  // Contact form model for two-way binding
+  form: ContactForm = {
     name: '',
     email: '',
-    message: ''
+    message: '',
+    phone: '',
   };
 
-  onSubmit() {
-    if (this.contactFormModel.name && this.contactFormModel.email && this.contactFormModel.message) {
-      console.log('Contact Form Submitted:', this.contactFormModel);
-      // Logic for sending form data to backend can be added here later
-      alert('Your message has been submitted!');
-    }
+  // Correct injection of HttpClient
+  http = inject(HttpClient);
+
+  send() {
+    console.log(this.form);
+
+    // The request to EmailJS
+    this.http
+      .post<any>(
+        'https://api.emailjs.com/api/v1.0/email/send',
+        {
+          // You can specify <any> for the response type
+          lib_version: '4.4.1',
+          service_id: 'service_3s60t2i',
+          template_id: 'template_l28cl5t',
+          template_params: this.form,
+          user_id: '75RX0XDmp380381Sr',
+        },
+        {
+          observe: 'body', // Observe the response body
+        }
+      )
+      .subscribe({
+        next: (response) => {
+          console.log('Sent !', response);
+        },
+        error: (err) => {
+          console.error('Error sending email:', err);
+        },
+      });
   }
 }
