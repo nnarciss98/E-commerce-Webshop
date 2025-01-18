@@ -8,11 +8,10 @@ import { RatingComponent } from '../../rating/rating.component';
 import { QuantitySelectorComponent } from '../quantity-selector/quantity-selector.component';
 
 @Component({
-  selector: 'app-shop-product-detail-page',
-  standalone: true,
-  imports: [CommonModule, RatingComponent, QuantitySelectorComponent],
-  templateUrl: './shop-product-detail-page.component.html',
-  styleUrls: ['./shop-product-detail-page.component.css'],
+    selector: 'app-shop-product-detail-page',
+    imports: [CommonModule, RatingComponent, QuantitySelectorComponent],
+    templateUrl: './shop-product-detail-page.component.html',
+    styleUrls: ['./shop-product-detail-page.component.css']
 })
 export class ShopProductDetailPageComponent implements OnInit {
   productId: string | null = null; // Explicit null initialization

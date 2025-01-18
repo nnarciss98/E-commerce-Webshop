@@ -5,11 +5,10 @@ import { CategoryService } from '../shop/services/category.service';
 import { Category } from '../types'; // Ensure you have this file with the correct type definition.
 
 @Component({
-  selector: 'app-navbar',
-  standalone: true,
-  imports: [RouterModule, CommonModule],
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css'],
+    selector: 'app-navbar',
+    imports: [RouterModule, CommonModule],
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
   isNavbarOpen = false;

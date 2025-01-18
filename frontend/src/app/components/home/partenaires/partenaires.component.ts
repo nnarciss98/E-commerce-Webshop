@@ -2,11 +2,10 @@ import { Component, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-partenaires',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './partenaires.component.html',
-  styleUrls: ['./partenaires.component.css'],
+    selector: 'app-partenaires',
+    imports: [CommonModule],
+    templateUrl: './partenaires.component.html',
+    styleUrls: ['./partenaires.component.css']
 })
 export class PartenairesComponent implements AfterViewInit {
   logos = [

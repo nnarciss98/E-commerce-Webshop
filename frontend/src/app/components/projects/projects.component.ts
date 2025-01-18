@@ -3,11 +3,10 @@ import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-projects',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css'],
+    selector: 'app-projects',
+    imports: [CommonModule],
+    templateUrl: './projects.component.html',
+    styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
   imagesWemmel: string[] = [];

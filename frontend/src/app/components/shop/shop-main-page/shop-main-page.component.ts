@@ -4,14 +4,13 @@ import { ShopFeaturedProductsComponent } from '../shop-featured-products/shop-fe
 import { ShopCustomersTestimonialsComponent } from '../shop-customers-testimonials/shop-customers-testimonials.component';
 
 @Component({
-  selector: 'shop-main-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-    ShopCustomersTestimonialsComponent,
-    ShopFeaturedProductsComponent,
-  ],
-  templateUrl: './shop-main-page.component.html',
-  styleUrl: './shop-main-page.component.css',
+    selector: 'shop-main-page',
+    imports: [
+        CommonModule,
+        ShopCustomersTestimonialsComponent,
+        ShopFeaturedProductsComponent,
+    ],
+    templateUrl: './shop-main-page.component.html',
+    styleUrl: './shop-main-page.component.css'
 })
 export class ShopMainPageComponent {}

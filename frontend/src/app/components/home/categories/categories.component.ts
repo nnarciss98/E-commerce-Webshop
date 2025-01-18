@@ -7,11 +7,10 @@ import { Product } from '../../types';
 import 'swiper/swiper-bundle.css';
 
 @Component({
-  selector: 'app-categories',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css'],
+    selector: 'app-categories',
+    imports: [CommonModule, RouterModule],
+    templateUrl: './categories.component.html',
+    styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent {
   // Array to hold all featured products

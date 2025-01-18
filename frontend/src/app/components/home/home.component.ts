@@ -6,16 +6,15 @@ import { RouterModule } from '@angular/router'; // <-- Import RouterModule
 import { ShopMainPageComponent } from '../shop/shop-main-page/shop-main-page.component';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [
-    CommonModule,
-    CategoriesComponent,
-    PartenairesComponent,
-    ShopMainPageComponent,
-    RouterModule,
-  ], // <-- Ensure RouterModule is in the imports array
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+    selector: 'app-home',
+    imports: [
+        CommonModule,
+        CategoriesComponent,
+        PartenairesComponent,
+        ShopMainPageComponent,
+        RouterModule,
+    ], // <-- Ensure RouterModule is in the imports array
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent {}
