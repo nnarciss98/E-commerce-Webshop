@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'sign-in',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './sign-in.component.html',
-  styleUrl: './sign-in.component.css'
+    selector: 'sign-in',
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './sign-in.component.html',
+    styleUrl: './sign-in.component.css'
 })
 export class SignInComponent {
 

@@ -2,11 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-rating',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './rating.component.html',
-  styleUrls: ['./rating.component.css'],
+    selector: 'app-rating',
+    imports: [CommonModule],
+    templateUrl: './rating.component.html',
+    styleUrls: ['./rating.component.css']
 })
 export class RatingComponent {
   @Input() maxStars: number = 5; // Maximum number of stars

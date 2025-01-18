@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'sign-up',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+    selector: 'sign-up',
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './sign-up.component.html',
+    styleUrl: './sign-up.component.css'
 })
 export class SignUpComponent {
   signUpForm: FormGroup;

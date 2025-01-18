@@ -6,11 +6,10 @@ import { initFlowbite } from 'flowbite';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'], // Fixed typo from 'styleUrl' to 'styleUrls'
+    selector: 'app-root',
+    imports: [RouterOutlet, NavbarComponent, FooterComponent],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   title = 'Mati-Onis';

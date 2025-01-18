@@ -2,11 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-projects',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css'],
+    selector: 'app-projects',
+    imports: [CommonModule],
+    templateUrl: './projects.component.html',
+    styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
   imagesWemmel: string[] = []; // Holds the list of image file names for Wemmel

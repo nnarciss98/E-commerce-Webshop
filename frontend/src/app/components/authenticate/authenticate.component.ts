@@ -3,11 +3,10 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 @Component({
-  selector: 'authenticate',
-  standalone: true,
-  imports: [SignInComponent, SignUpComponent],
-  templateUrl: './authenticate.component.html',
-  styleUrl: './authenticate.component.css'
+    selector: 'authenticate',
+    imports: [SignInComponent, SignUpComponent],
+    templateUrl: './authenticate.component.html',
+    styleUrl: './authenticate.component.css'
 })
 export class AuthenticateComponent {
 

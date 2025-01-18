@@ -2,11 +2,10 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'shop-customers-testimonials',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './shop-customers-testimonials.component.html',
-  styleUrl: './shop-customers-testimonials.component.css'
+    selector: 'shop-customers-testimonials',
+    imports: [CommonModule],
+    templateUrl: './shop-customers-testimonials.component.html',
+    styleUrl: './shop-customers-testimonials.component.css'
 })
 export class ShopCustomersTestimonialsComponent {
   testimonials = [
