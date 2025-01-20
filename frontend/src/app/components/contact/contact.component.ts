@@ -34,15 +34,19 @@ export class ContactComponent {
   // Correct injection of HttpClient
   http = inject(HttpClient);
 
-  send() {
-    console.log(this.form);
+  send(contactForm: any) {
+    if (contactForm.invalid) {
+      const errorModal = document.getElementById('errorModal');
+      if (errorModal) {
+        errorModal.classList.remove('hidden');
+      }
+      return; // Prevent further execution
+    }
 
-    // The request to EmailJS
     this.http
       .post<any>(
         'https://api.emailjs.com/api/v1.0/email/send',
         {
-          // You can specify <any> for the response type
           lib_version: '4.4.1',
           service_id: 'service_3s60t2i',
           template_id: 'template_l28cl5t',
@@ -50,15 +54,26 @@ export class ContactComponent {
           user_id: '75RX0XDmp380381Sr',
         },
         {
-          observe: 'body', // Observe the response body
+          observe: 'body',
         }
       )
       .subscribe({
         next: (response) => {
-          console.log('Sent !', response);
+          console.log('Message sent!', response);
+          // Show success modal
+          const successModal = document.getElementById('successModal');
+          if (successModal) {
+            successModal.classList.remove('hidden');
+          }
+          contactForm.reset(); // Reset the form
         },
         error: (err) => {
           console.error('Error sending email:', err);
+          // Show error modal
+          const errorModal = document.getElementById('errorModal');
+          if (errorModal) {
+            errorModal.classList.remove('hidden');
+          }
         },
       });
   }
