@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Product } from '../../types';
 import { ProductService } from '../services/product.service';
+import { ReviewService } from '../services/review.service';
 
 @Component({
     selector: 'shop-featured-products',
@@ -11,20 +12,14 @@ import { ProductService } from '../services/product.service';
     styleUrl: './shop-featured-products.component.css'
 })
 export class ShopFeaturedProductsComponent implements OnInit {
-  // Array to hold all featured products
   featuredProducts: Product[] = [];
-  // Array to hold products displayed on the current page
   paginatedFeaturedProducts: Product[] = [];
-  // Current page number for pagination
   currentPage: number = 1;
-  // Number of products displayed per page
   pageSize: number = 8;
-  // Total number of pages calculated based on the total products
   totalPages: number = 1;
-  // Array of page numbers for pagination navigation
   pages: number[] = [];
 
-  constructor(private productService: ProductService) {}
+  constructor(private productService: ProductService, private reviewServide: ReviewService) {}
 
   /**
    * Angular lifecycle hook that gets called after the component is initialized.
@@ -32,6 +27,10 @@ export class ShopFeaturedProductsComponent implements OnInit {
    */
   ngOnInit(): void {
     this.loadFeaturedProducts();
+  }
+
+  test(){
+    this.reviewServide.test
   }
 
   /**
