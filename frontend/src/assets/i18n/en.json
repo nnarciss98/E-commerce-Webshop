@@ -1,5 +1,9 @@
 {
   "welcome": "Welcome",
   "login": "Login",
-  "logout": "Logout"
+  "logout": "Logout",
+  "NAVBAR": {
+    "LANG_EN": "English",
+    "LANG_FR": "French"
+  }
 }
