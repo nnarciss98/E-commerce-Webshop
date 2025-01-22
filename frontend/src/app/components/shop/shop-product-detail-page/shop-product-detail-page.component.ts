@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
-import { Router } from '@angular/router';
+import { ReviewService } from '../services/review.service';
 import { Product } from '../../types';
 import { CommonModule } from '@angular/common';
 import { RatingComponent } from '../../rating/rating.component';
 import { QuantitySelectorComponent } from '../quantity-selector/quantity-selector.component';
 
 @Component({
-    selector: 'app-shop-product-detail-page',
-    imports: [CommonModule, RatingComponent, QuantitySelectorComponent],
-    templateUrl: './shop-product-detail-page.component.html',
-    styleUrls: ['./shop-product-detail-page.component.css']
+  selector: 'app-shop-product-detail-page',
+  standalone: true, // Ensures this is a standalone component
+  imports: [CommonModule, RatingComponent, QuantitySelectorComponent],
+  templateUrl: './shop-product-detail-page.component.html',
+  styleUrls: ['./shop-product-detail-page.component.css'],
 })
 export class ShopProductDetailPageComponent implements OnInit {
   productId: string | null = null; // Explicit null initialization
   product: Product | undefined; // Product object
   currentImageIndex: number = 0; // Index for image carousel
+  initialQuantity = 1; // Initial quantity for quantity selector
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private reviewService: ReviewService,
     private router: Router
   ) {}
 
@@ -79,20 +82,32 @@ export class ShopProductDetailPageComponent implements OnInit {
   }
 
   /**
-   * Navigate back to the shop page.
+   * Handle rating change and save it using ReviewService.
+   * @param newRating The new rating selected by the user.
    */
-  // goBack(): void {
-  //   this.router.navigate(['/shop']);
-  // }
-
   onRatingChange(newRating: number): void {
-    console.log('New rating:', newRating);
-    // Optionally, save the rating to a server or update the product data
+    if (this.product) {
+      const review = {
+        productId: this.product.id,
+        userEmail: 'user@example.com', // Replace with the actual logged-in user's email
+        rating: newRating,
+      };
+
+      this.reviewService.createReview(review).subscribe({
+        next: (response) => {
+          console.log('Review submitted successfully:', response);
+        },
+        error: (err) => {
+          console.error('Error submitting review:', err);
+        },
+      });
+    }
   }
 
-  // For quantity selector
-  initialQuantity = 1;
-
+  /**
+   * Handle quantity change from the QuantitySelectorComponent.
+   * @param newQuantity The new quantity selected by the user.
+   */
   onQuantityChange(newQuantity: number): void {
     console.log('New Quantity:', newQuantity);
   }

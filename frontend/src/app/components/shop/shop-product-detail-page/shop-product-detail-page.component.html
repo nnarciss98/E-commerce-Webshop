@@ -45,7 +45,9 @@
           (ratingChange)="onRatingChange($event)"
           [readOnly]="false"
         ></app-rating>
-        <p class="text-secondary text-xs">{{ product.rating }}</p>
+        <p class="text-secondary text-xs">
+          {{ product.rating || "No ratings yet" }}
+        </p>
       </div>
       <!--End Rating section -->
       <p class="text-xl font-normal text-secondary mb-4">
