@@ -23,9 +23,6 @@ public class AddressController {
         return ResponseEntity.ok(addressDTO);
     }
 
-    // TODO: fix this so that it works with multiple addresses
-    //  (as of right now it will only work properly as long as there is only one address,
-    //      while the relationship from user to addresses is OneToMany)
     @GetMapping("/user/{userEmail}")
     public ResponseEntity<AddressDTO> getAddressByUserEmail(@PathVariable String userEmail) {
         AddressDTO addressDTO = addressService.getAddressByUserEmail(userEmail);
