@@ -4,17 +4,30 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { initFlowbite } from 'flowbite';
 import { isPlatformBrowser } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, NavbarComponent, FooterComponent],
+    imports: [RouterOutlet, NavbarComponent, FooterComponent, TranslateModule],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   title = 'Mati-Onis';
+  isLoaded = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object, private translate: TranslateService) {
+    this.translate.addLangs(['en', 'fr']);
+    this.translate.setDefaultLang('en');
+
+    this.translate.use('en').subscribe(() => {
+      this.isLoaded = true;
+    });
+  }
+
+  useLanguage(language: string): void {
+    this.translate.use(language);
+  }
 
   ngOnInit(): void {
     // Safely initialize Flowbite only in the browser

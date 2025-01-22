@@ -2,16 +2,19 @@
 
 import { bootstrapApplication } from '@angular/platform-browser';
 import { AppComponent } from './app/app.component';
-import { provideRouter } from '@angular/router';
-import { routes } from './app/app.routes';
-import { provideHttpClient, withFetch } from '@angular/common/http'; 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { importProvidersFrom } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// Import the application configuration
+import { appConfig } from './app/app.config';
+
+/*
+ * Bootstraps the Angular application using the root component (AppComponent).
+ * The app-level configuration (providers) is imported from app.config.ts
+ */
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(routes), 
-    provideHttpClient(withFetch()), 
-    importProvidersFrom(BrowserAnimationsModule),
+    ...appConfig.providers, // Use the providers defined in app.config.ts
+    importProvidersFrom(BrowserAnimationsModule), // Add BrowserAnimationsModule if required
   ],
 }).catch((err) => console.error(err));

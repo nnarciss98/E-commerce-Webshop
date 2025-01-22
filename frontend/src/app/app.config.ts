@@ -1,10 +1,73 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  ApplicationConfig,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+import {
+  provideTranslateService,
+  TranslateLoader,
+  TranslateService,
+  TranslateStore,
+} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { routes } from './app.routes';
 
+/*
+ * Factory function for TranslateHttpLoader.
+ * This function configures the loader to fetch translation files from 'assets/i18n/'.
+ */
+export function httpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
+}
+
+/*
+ * Initialization function for TranslateService.
+ * This function adds supported languages, sets the default language, and loads the initial translations.
+ */
+export function initializeApp(translate: TranslateService) {
+  return () => {
+    translate.addLangs(['en', 'fr']); // Add supported languages
+    translate.setDefaultLang('en'); // Set the default language
+    return translate.use('en').toPromise(); // Load translations for the default language
+  };
+}
+
+/*
+ * Application configuration object.
+ * This centralizes the app-level providers for better modularity and maintainability.
+ */
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideHttpClient(), provideClientHydration()]
+  providers: [
+    /* Enable optimized zone-based change detection */
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes),
+    provideHttpClient(withFetch()),
+
+    /* Enable client-side hydration for server-side rendering */
+    provideClientHydration(),
+
+    /* Include TranslateStore for managing translation state */
+    TranslateStore,
+
+    /* Provide TranslateService with a loader for translation files */
+    provideTranslateService({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
+
+    /* Ensure TranslateService is initialized before the app starts */
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeApp,
+      deps: [TranslateService],
+      multi: true,
+    },
+  ],
 };

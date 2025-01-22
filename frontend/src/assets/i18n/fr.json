@@ -1,0 +1,9 @@
+{
+  "welcome": "Bienvenue",
+  "login": "Connexion",
+  "logout": "Déconnexion",
+  "NAVBAR": {
+    "LANG_EN": "Anglais",
+    "LANG_FR": "Francais"
+  }
+}
