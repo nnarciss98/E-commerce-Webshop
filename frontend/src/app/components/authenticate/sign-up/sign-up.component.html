@@ -7,7 +7,7 @@
   <!-- NAME INFO -->
   <div class="mb-5">
     <label for="name" class="block text-sm font-medium text-secondary mb-1"
-      >Name</label
+      >Nom</label
     >
     <input
       id="name"
@@ -20,10 +20,10 @@
       *ngIf="name.invalid && (name.dirty || name.touched)"
       class="error text-red-500 text-sm mt-1"
     >
-      <small *ngIf="name.errors?.['required']">Name is required.</small>
-      <small *ngIf="name.errors?.['minlength']">
-        Name must be at least 3 characters.
-      </small>
+      <small *ngIf="name.errors?.['required']">Le nom est requis.</small>
+      <small *ngIf="name.errors?.['minlength']"
+        >Le nom doit comporter au moins 3 caractères.</small
+      >
     </div>
   </div>
 
@@ -39,6 +39,7 @@
       class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
     />
   </div>
+
   <div class="mb-5 grid grid-cols-2 gap-8">
     <div>
       <label
@@ -49,18 +50,18 @@
       <input
         id="street-number"
         type="text"
-        placeholder=""
+        placeholder="Numéro"
         class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
       />
     </div>
     <div>
       <label for="postal" class="block text-sm font-medium text-secondary mb-1"
-        >Code postal</label
+        >Code Postal</label
       >
       <input
-        id="POSTAL"
+        id="postal"
         type="text"
-        placeholder=""
+        placeholder="Code postal"
         class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
       />
     </div>
@@ -72,11 +73,11 @@
       >Date de naissance</label
     >
     <input
-      datepicker
-      id="default-datepicker"
-      type="text"
+      id="birthday"
+      type="date"
+      formControlName="birthday"
       class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-      placeholder="Entrer date de naissance"
+      placeholder="Sélectionner une date de naissance"
     />
   </div>
 
@@ -96,8 +97,8 @@
       *ngIf="email.invalid && (email.dirty || email.touched)"
       class="error text-red-500 text-sm mt-1"
     >
-      <small *ngIf="email.errors?.['required']">Email is required.</small>
-      <small *ngIf="email.errors?.['email']">Invalid email format.</small>
+      <small *ngIf="email.errors?.['required']">L'email est requis.</small>
+      <small *ngIf="email.errors?.['email']">Format de l'email invalide.</small>
     </div>
   </div>
 
@@ -117,30 +118,31 @@
       *ngIf="password.invalid && (password.dirty || password.touched)"
       class="error text-red-500 text-sm mt-1"
     >
-      <small *ngIf="password.errors?.['required']">
-        Password is required.
-      </small>
-      <small *ngIf="password.errors?.['minlength']">
-        Password must be at least 8 characters.
-      </small>
-      <small *ngIf="password.errors?.['passwordComplexity']">
-        Password must contain at least one uppercase letter, one lowercase
-        letter, and one number.
-      </small>
+      <small *ngIf="password.errors?.['required']"
+        >Le mot de passe est requis.</small
+      >
+      <small *ngIf="password.errors?.['minlength']"
+        >Le mot de passe doit comporter au moins 8 caractères.</small
+      >
+      <small *ngIf="password.errors?.['passwordComplexity']"
+        >Le mot de passe doit contenir au moins une majuscule, une minuscule et
+        un chiffre.</small
+      >
     </div>
   </div>
 
+  <!-- CONFIRM PASSWORD INFO -->
   <div class="form-group mb-4">
     <label
       for="confirmPassword"
       class="block text-sm font-medium text-secondary mb-1"
-      >Confirm Password</label
+      >Confirmer le mot de passe</label
     >
     <input
       id="confirmPassword"
       type="password"
       formControlName="confirmPassword"
-      placeholder="Confirm your password"
+      placeholder="Confirmez votre mot de passe"
       class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
     />
     <div
@@ -150,12 +152,12 @@
       "
       class="error text-red-500 text-sm mt-1"
     >
-      <small *ngIf="confirmPassword.errors?.['required']">
-        Confirming your password is required.
-      </small>
-      <small *ngIf="signUpForm.errors?.['passwordMismatch']">
-        Passwords do not match.
-      </small>
+      <small *ngIf="confirmPassword.errors?.['required']"
+        >La confirmation du mot de passe est requise.</small
+      >
+      <small *ngIf="signUpForm.errors?.['passwordMismatch']"
+        >Les mots de passe ne correspondent pas.</small
+      >
     </div>
   </div>
 
