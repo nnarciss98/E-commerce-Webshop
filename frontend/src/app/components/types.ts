@@ -15,7 +15,7 @@ export interface Product {
   categoryId: string;
   imageUrls: string[];
   category: string[];
-  rating?: number; // Average rating (0 to 5)
+  rating?: number; 
 }
 
 export interface Cart {
@@ -58,6 +58,16 @@ export interface Review {
   rating: number;
   comment: string;
   createdAt: Date; 
+}
+
+export interface Address {
+  id?: string; 
+  userEmail: string;
+  street: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
 }
 
 
