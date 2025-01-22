@@ -51,7 +51,7 @@ export interface OrderItem {
   price: string;
 }
 
-export interface ReviewDTO {
+export interface Review {
   id: string;
   productId: string;
   userEmail: string;

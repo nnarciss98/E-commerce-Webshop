@@ -24,6 +24,11 @@ public class ReviewController {
         return ResponseEntity.ok(createdReview);
     }
 
+    @GetMapping("/test")
+    public ResponseEntity<String> testEndpoint(){
+        return ResponseEntity.ok("Test Works");
+    }
+
     @GetMapping("/product/{id}")
     public ResponseEntity<List<ReviewDTO>> getAllReviews(@PathVariable UUID productId) {
         List<ReviewDTO> reviews = reviewService.getReviewsByProduct(productId);

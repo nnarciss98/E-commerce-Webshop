@@ -1,12 +1,7 @@
 import { CommonModule } from '@angular/common';
-import {
-  HttpClient,
-  HttpClientModule,
-  HttpHeaders,
-} from '@angular/common/http'; // Correct import of HttpClient
-import { Component, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http'; 
+import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import emailjs from '@emailjs/browser';
 
 interface ContactForm {
   name: string;
@@ -18,7 +13,7 @@ interface ContactForm {
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
 })
@@ -31,8 +26,8 @@ export class ContactComponent {
     phone: '',
   };
 
-  // Correct injection of HttpClient
-  http = inject(HttpClient);
+  constructor(private http: HttpClient){
+  }
 
   send(contactForm: any) {
     if (contactForm.invalid) {
