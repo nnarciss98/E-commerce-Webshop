@@ -25,7 +25,8 @@ export class SignUpComponent {
   ) {
     this.signUpForm = this.fb.group(
       {
-        name: ['', [Validators.required, Validators.minLength(3)]],
+        firstname: ['', [Validators.required, Validators.minLength(3)]],
+        lastname: ['', [Validators.required, Validators.minLength(3)]],
         email: ['', [Validators.required, Validators.email]],
         password: [
           '',
@@ -48,8 +49,12 @@ export class SignUpComponent {
     return this.signUpForm.get('confirmPassword')!;
   }
 
-  get name() {
-    return this.signUpForm.get('name')!;
+  get firstname() {
+    return this.signUpForm.get('firstname')!;
+  }
+
+  get lastname() {
+    return this.signUpForm.get('lastname');
   }
 
   get email() {
@@ -86,11 +91,18 @@ export class SignUpComponent {
 
   onSubmit() {
     if (this.signUpForm.valid) {
-      const { name, email, password, birthday } = this.signUpForm.value;
-      console.log('Sign-Up Successful', { name, email, password, birthday });
+      const { firstname, lastname, email, password, birthday } =
+        this.signUpForm.value;
+      console.log('Sign-Up Successful', {
+        firstname,
+        lastname,
+        email,
+        password,
+        birthday,
+      });
 
       // Call AuthService to register the user
-      this.authService.register(name, email, password).subscribe(
+      this.authService.register(firstname, lastname, email, password).subscribe(
         (response) => {
           console.log('Registration successful', response);
           // After successful registration, navigate to the login page or dashboard

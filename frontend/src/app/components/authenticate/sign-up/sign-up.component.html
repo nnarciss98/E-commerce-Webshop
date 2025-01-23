@@ -5,65 +5,181 @@
   </h2>
 
   <!-- NAME INFO -->
-  <div class="mb-5">
-    <label for="name" class="block text-sm font-medium text-secondary mb-1"
-      >Nom</label
-    >
-    <input
-      id="name"
-      type="text"
-      formControlName="name"
-      placeholder="John Doe"
-      class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-    />
-    <div
-      *ngIf="name.invalid && (name.dirty || name.touched)"
-      class="error text-red-500 text-sm mt-1"
-    >
-      <small *ngIf="name.errors?.['required']">Le nom est requis.</small>
-      <small *ngIf="name.errors?.['minlength']"
-        >Le nom doit comporter au moins 3 caractères.</small
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+    <!-- first name -->
+    <div class="">
+      <label
+        for="firstname"
+        class="block text-sm font-medium text-secondary mb-1"
+        >Nom</label
       >
+      <input
+        id="firstname"
+        type="text"
+        formControlName="firstname"
+        placeholder="Doe"
+        class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+      />
+      <div
+        *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+        class="error text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="firstname.errors?.['required']">Le nom est requis.</small>
+        <small *ngIf="firstname.errors?.['minlength']"
+          >Le nom doit comporter au moins 3 caractères.</small
+        >
+      </div>
+    </div>
+    <div class="">
+      <label
+        for="lastname"
+        class="block text-sm font-medium text-secondary mb-1"
+        >Prénom</label
+      >
+      <input
+        id="lastname"
+        type="text"
+        formControlName="lastname"
+        placeholder="John"
+        class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+      />
+      <div
+        *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+        class="error text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="firstname.errors?.['required']"
+          >Le prénom est requis.</small
+        >
+        <small *ngIf="firstname.errors?.['minlength']"
+          >Le nom doit comporter au moins 3 caractères.</small
+        >
+      </div>
     </div>
   </div>
 
   <!-- ADDRESS INFOS -->
-  <div class="mb-5">
-    <label for="address" class="block text-sm font-medium text-secondary mb-1"
-      >Rue</label
-    >
-    <input
-      id="address"
-      type="text"
-      placeholder="Rue de la République"
-      class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-    />
-  </div>
-
-  <div class="mb-5 grid grid-cols-2 gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
+    <div class="md:col-span-2">
+      <label for="street" class="block text-sm font-medium text-secondary mb-1"
+        >Rue</label
+      >
+      <input
+        id="street"
+        type="text"
+        placeholder="Rue de la République"
+        class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+      />
+    </div>
     <div>
       <label
-        for="street-number"
+        for="streetNumber"
         class="block text-sm font-medium text-secondary mb-1"
         >Numéro</label
       >
       <input
-        id="street-number"
+        id="streetNumber"
         type="text"
         placeholder="Numéro"
         class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
       />
     </div>
+  </div>
+
+  <div class="mb-5 grid grid-cols-1 md:grid-cols-4 gap-4">
     <div>
-      <label for="postal" class="block text-sm font-medium text-secondary mb-1"
+      <label
+        for="postalCode"
+        class="block text-sm font-medium text-secondary mb-1"
         >Code Postal</label
       >
       <input
-        id="postal"
+        id="postalCode"
         type="text"
-        placeholder="Code postal"
+        placeholder=""
         class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
       />
+    </div>
+    <div>
+      <label for="city" class="block text-sm font-medium text-secondary mb-1"
+        >Ville</label
+      >
+      <input
+        id="city"
+        type="text"
+        placeholder=""
+        class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+      />
+    </div>
+    <div class="md:col-span-2">
+      <label for="country" class="block text-sm font-medium text-secondary">
+        Choisisez votre pays
+      </label>
+      <div class="relative mt-1">
+        <select
+          name="country"
+          id="country"
+          class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
+        >
+          <option class="text-secondary" value="0" disabled selected>
+            Select a country...
+          </option>
+          <optgroup label="Africa">
+            <option value="DZ">Algeria</option>
+            <option value="AO">Angola</option>
+            <option value="BJ">Benin</option>
+            <option value="BW">Botswana</option>
+            <option value="ZA">South Africa</option>
+            <option value="NG">Nigeria</option>
+            <option value="EG">Egypt</option>
+            <option value="KE">Kenya</option>
+            <option value="MA">Morocco</option>
+            <!-- Add more countries as needed -->
+          </optgroup>
+          <optgroup label="Americas">
+            <option value="AI">Anguilla</option>
+            <option value="AG">Antigua and Barbuda</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="BR">Brazil</option>
+            <option value="MX">Mexico</option>
+            <option value="AR">Argentina</option>
+            <option value="AW">Aruba</option>
+            <!-- Add more countries as needed -->
+          </optgroup>
+          <optgroup label="Asia">
+            <option value="AF">Afghanistan</option>
+            <option value="AM">Armenia</option>
+            <option value="AZ">Azerbaijan</option>
+            <option value="BH">Bahrain</option>
+            <option value="CN">China</option>
+            <option value="IN">India</option>
+            <option value="JP">Japan</option>
+            <option value="KR">South Korea</option>
+            <option value="SA">Saudi Arabia</option>
+            <!-- Add more countries as needed -->
+          </optgroup>
+          <optgroup label="Europe">
+            <option value="AL">Albania</option>
+            <option value="AD">Andorra</option>
+            <option value="AT">Austria</option>
+            <option value="BY">Belarus</option>
+            <option value="FR">France</option>
+            <option value="DE">Germany</option>
+            <option value="IT">Italy</option>
+            <option value="ES">Spain</option>
+            <option value="UK">United Kingdom</option>
+            <!-- Add more countries as needed -->
+          </optgroup>
+          <optgroup label="Oceania">
+            <option value="AS">American Samoa</option>
+            <option value="AQ">Antarctica</option>
+            <option value="AU">Australia</option>
+            <option value="BV">Bouvet Island</option>
+            <option value="NZ">New Zealand</option>
+            <!-- Add more countries as needed -->
+          </optgroup>
+        </select>
+      </div>
     </div>
   </div>
 
@@ -83,12 +199,12 @@
 
   <!-- EMAIL INFOS -->
   <div class="form-group mb-4">
-    <label for="email" class="block text-sm font-medium text-secondary mb-1"
+    <label for="userEmail" class="block text-sm font-medium text-secondary mb-1"
       >Email</label
     >
     <input
-      id="email"
-      type="email"
+      id="userEmail"
+      type="userEmail"
       formControlName="email"
       placeholder="name@gmail.com"
       class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"

@@ -13,9 +13,15 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   // Register method to send a POST request to the backend
-  register(name: string, email: string, password: string): Observable<any> {
+  register(
+    lastname: string,
+    firstname: string,
+    email: string,
+    password: string
+  ): Observable<any> {
     return this.http.post<any>(this.apiUrlRegister, {
-      name,
+      lastname,
+      firstname,
       email,
       password,
     });

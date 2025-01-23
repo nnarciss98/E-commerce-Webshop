@@ -64,8 +64,8 @@ export interface Address {
   id?: string;
   userEmail: string;
   street: string;
+  streetNumber: string;
   city: string;
-  state: string;
   postalCode: string;
   country: string;
 }

@@ -30,8 +30,8 @@ export function httpLoaderFactory(http: HttpClient) {
 export function initializeApp(translate: TranslateService) {
   return () => {
     translate.addLangs(['en', 'fr']); // Add supported languages
-    translate.setDefaultLang('en'); // Set the default language
-    return translate.use('en').toPromise(); // Load translations for the default language
+    translate.setDefaultLang('fr'); // Set the default language
+    return translate.use('fr').toPromise(); // Load translations for the default language
   };
 }
 
@@ -54,7 +54,7 @@ export const appConfig: ApplicationConfig = {
 
     /* Provide TranslateService with a loader for translation files */
     provideTranslateService({
-      defaultLanguage: 'en',
+      defaultLanguage: 'fr',
       loader: {
         provide: TranslateLoader,
         useFactory: httpLoaderFactory,
