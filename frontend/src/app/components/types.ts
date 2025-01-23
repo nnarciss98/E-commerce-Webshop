@@ -60,6 +60,16 @@ export interface Review {
   createdAt: Date;
 }
 
+export interface Address {
+  id?: string;
+  userEmail: string;
+  street: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+}
+
 export enum OrderStatus {
   PENDING = 'PENDING',
   SHIPPED = 'SHIPPED',

@@ -5,5 +5,11 @@
   "NAVBAR": {
     "LANG_EN": "Anglais",
     "LANG_FR": "Francais"
+  },
+  "home": {
+    "about-us": {
+      "title": "Votre partenaire en électricité, pour des solutions fiables et durables",
+      "paragraph": "Nous proposons des services électriques adaptés à vos besoins, que ce soit pour des projets résidentiels, commerciaux ou industriels"
+    }
   }
 }
