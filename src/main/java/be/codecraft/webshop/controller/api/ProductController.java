@@ -21,13 +21,13 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductDTO>> getAllProducts() {
-        return ResponseEntity.ok(productService.getAllProducts());
+    public ResponseEntity<List<ProductDTO>> getAllProducts(@RequestParam String lang) {
+        return ResponseEntity.ok(productService.getAllProducts(lang));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> getProductById(@PathVariable UUID id) {
-        return ResponseEntity.ok(productService.getProductById(id));
+    public ResponseEntity<ProductDTO> getProductById(@PathVariable UUID id, @RequestParam String lang) {
+        return ResponseEntity.ok(productService.getProductById(id, lang));
     }
 
     @PostMapping

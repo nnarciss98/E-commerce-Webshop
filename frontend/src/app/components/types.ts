@@ -15,7 +15,7 @@ export interface Product {
   categoryId: string;
   imageUrls: string[];
   category: string[];
-  rating?: number; 
+  rating?: number;
 }
 
 export interface Cart {
@@ -57,19 +57,18 @@ export interface Review {
   userEmail: string;
   rating: number;
   comment: string;
-  createdAt: Date; 
+  createdAt: Date;
 }
 
 export interface Address {
-  id?: string; 
+  id?: string;
   userEmail: string;
   street: string;
+  streetNumber: string;
   city: string;
-  state: string;
   postalCode: string;
   country: string;
 }
-
 
 export enum OrderStatus {
   PENDING = 'PENDING',
