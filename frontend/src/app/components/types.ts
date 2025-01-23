@@ -70,7 +70,6 @@ export interface Address {
   country: string;
 }
 
-
 export enum OrderStatus {
   PENDING = 'PENDING',
   SHIPPED = 'SHIPPED',
