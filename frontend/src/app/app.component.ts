@@ -7,20 +7,23 @@ import { isPlatformBrowser } from '@angular/common';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-root',
-    imports: [RouterOutlet, NavbarComponent, FooterComponent, TranslateModule],
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+  selector: 'app-root',
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, TranslateModule],
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
   title = 'Mati-Onis';
   isLoaded = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private translate: TranslateService) {
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private translate: TranslateService
+  ) {
     this.translate.addLangs(['en', 'fr']);
-    this.translate.setDefaultLang('en');
+    this.translate.setDefaultLang('fr');
 
-    this.translate.use('en').subscribe(() => {
+    this.translate.use('fr').subscribe(() => {
       this.isLoaded = true;
     });
   }

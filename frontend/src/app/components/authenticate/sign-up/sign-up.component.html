@@ -6,8 +6,7 @@
 
   <!-- NAME INFO -->
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
-    <!-- first name -->
-    <div class="">
+    <div>
       <label
         for="firstname"
         class="block text-sm font-medium text-secondary mb-1"
@@ -30,7 +29,7 @@
         >
       </div>
     </div>
-    <div class="">
+    <div>
       <label
         for="lastname"
         class="block text-sm font-medium text-secondary mb-1"
@@ -44,20 +43,20 @@
         class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
       />
       <div
-        *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+        *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
         class="error text-red-500 text-sm mt-1"
       >
-        <small *ngIf="firstname.errors?.['required']"
+        <small *ngIf="lastname.errors?.['required']"
           >Le prénom est requis.</small
         >
-        <small *ngIf="firstname.errors?.['minlength']"
-          >Le nom doit comporter au moins 3 caractères.</small
+        <small *ngIf="lastname.errors?.['minlength']"
+          >Le prénom doit comporter au moins 3 caractères.</small
         >
       </div>
     </div>
   </div>
 
-  <!-- ADDRESS INFOS -->
+  <!-- ADDRESS INFO -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-5">
     <div class="md:col-span-2">
       <label for="street" class="block text-sm font-medium text-secondary mb-1"
@@ -66,9 +65,16 @@
       <input
         id="street"
         type="text"
+        formControlName="street"
         placeholder="Rue de la République"
         class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
       />
+      <div
+        *ngIf="street.invalid && (street.dirty || street.touched)"
+        class="error text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="street.errors?.['required']">La rue est requise.</small>
+      </div>
     </div>
     <div>
       <label
@@ -79,13 +85,24 @@
       <input
         id="streetNumber"
         type="text"
+        formControlName="streetNumber"
         placeholder="Numéro"
         class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
       />
+      <div
+        *ngIf="
+          streetNumber.invalid && (streetNumber.dirty || streetNumber.touched)
+        "
+        class="error text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="streetNumber.errors?.['required']"
+          >Le numéro est requis.</small
+        >
+      </div>
     </div>
   </div>
 
-  <div class="mb-5 grid grid-cols-1 md:grid-cols-4 gap-4">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-5">
     <div>
       <label
         for="postalCode"
@@ -95,9 +112,18 @@
       <input
         id="postalCode"
         type="text"
+        formControlName="postalCode"
         placeholder=""
         class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
       />
+      <div
+        *ngIf="postalCode.invalid && (postalCode.dirty || postalCode.touched)"
+        class="error text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="postalCode.errors?.['required']"
+          >Le code postal est requis.</small
+        >
+      </div>
     </div>
     <div>
       <label for="city" class="block text-sm font-medium text-secondary mb-1"
@@ -106,105 +132,50 @@
       <input
         id="city"
         type="text"
+        formControlName="city"
         placeholder=""
         class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
       />
+      <div
+        *ngIf="city.invalid && (city.dirty || city.touched)"
+        class="error text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="city.errors?.['required']">La ville est requise.</small>
+      </div>
     </div>
     <div class="md:col-span-2">
-      <label for="country" class="block text-sm font-medium text-secondary">
-        Choisisez votre pays
-      </label>
-      <div class="relative mt-1">
-        <select
-          name="country"
-          id="country"
-          class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
-        >
-          <option class="text-secondary" value="0" disabled selected>
-            Select a country...
-          </option>
-          <optgroup label="Africa">
-            <option value="DZ">Algeria</option>
-            <option value="AO">Angola</option>
-            <option value="BJ">Benin</option>
-            <option value="BW">Botswana</option>
-            <option value="ZA">South Africa</option>
-            <option value="NG">Nigeria</option>
-            <option value="EG">Egypt</option>
-            <option value="KE">Kenya</option>
-            <option value="MA">Morocco</option>
-            <!-- Add more countries as needed -->
-          </optgroup>
-          <optgroup label="Americas">
-            <option value="AI">Anguilla</option>
-            <option value="AG">Antigua and Barbuda</option>
-            <option value="US">United States</option>
-            <option value="CA">Canada</option>
-            <option value="BR">Brazil</option>
-            <option value="MX">Mexico</option>
-            <option value="AR">Argentina</option>
-            <option value="AW">Aruba</option>
-            <!-- Add more countries as needed -->
-          </optgroup>
-          <optgroup label="Asia">
-            <option value="AF">Afghanistan</option>
-            <option value="AM">Armenia</option>
-            <option value="AZ">Azerbaijan</option>
-            <option value="BH">Bahrain</option>
-            <option value="CN">China</option>
-            <option value="IN">India</option>
-            <option value="JP">Japan</option>
-            <option value="KR">South Korea</option>
-            <option value="SA">Saudi Arabia</option>
-            <!-- Add more countries as needed -->
-          </optgroup>
-          <optgroup label="Europe">
-            <option value="AL">Albania</option>
-            <option value="AD">Andorra</option>
-            <option value="AT">Austria</option>
-            <option value="BY">Belarus</option>
-            <option value="FR">France</option>
-            <option value="DE">Germany</option>
-            <option value="IT">Italy</option>
-            <option value="ES">Spain</option>
-            <option value="UK">United Kingdom</option>
-            <!-- Add more countries as needed -->
-          </optgroup>
-          <optgroup label="Oceania">
-            <option value="AS">American Samoa</option>
-            <option value="AQ">Antarctica</option>
-            <option value="AU">Australia</option>
-            <option value="BV">Bouvet Island</option>
-            <option value="NZ">New Zealand</option>
-            <!-- Add more countries as needed -->
-          </optgroup>
-        </select>
+      <label for="country" class="block text-sm font-medium text-secondary"
+        >Pays</label
+      >
+      <select
+        id="country"
+        formControlName="country"
+        class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md"
+      >
+        <option value="" disabled selected>Choisissez un pays...</option>
+        <option value="FR">France</option>
+        <option value="US">États-Unis</option>
+        <option value="DE">Allemagne</option>
+        <option value="JP">Japon</option>
+        <!-- Add more countries as needed -->
+      </select>
+      <div
+        *ngIf="country.invalid && (country.dirty || country.touched)"
+        class="error text-red-500 text-sm mt-1"
+      >
+        <small *ngIf="country.errors?.['required']">Le pays est requis.</small>
       </div>
     </div>
   </div>
 
-  <!-- BIRTHDAY INFOS -->
-  <!-- <div class="form-group mb-4">
-    <label for="birthday" class="block text-sm font-medium text-secondary mb-1"
-      >Date de naissance</label
-    >
-    <input
-      id="birthday"
-      type="date"
-      formControlName="birthday"
-      class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-      placeholder="Sélectionner une date de naissance"
-    />
-  </div> -->
-
-  <!-- EMAIL INFOS -->
+  <!-- EMAIL AND PASSWORD -->
   <div class="form-group mb-4">
-    <label for="userEmail" class="block text-sm font-medium text-secondary mb-1"
+    <label for="email" class="block text-sm font-medium text-secondary mb-1"
       >Email</label
     >
     <input
-      id="userEmail"
-      type="userEmail"
+      id="email"
+      type="email"
       formControlName="email"
       placeholder="name@gmail.com"
       class="form-control block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
@@ -218,7 +189,6 @@
     </div>
   </div>
 
-  <!-- PASSWORD INFO -->
   <div class="form-group mb-4">
     <label for="password" class="block text-sm font-medium text-secondary mb-1"
       >Mot de passe</label
@@ -247,7 +217,6 @@
     </div>
   </div>
 
-  <!-- CONFIRM PASSWORD INFO -->
   <div class="form-group mb-4">
     <label
       for="confirmPassword"
@@ -277,11 +246,12 @@
     </div>
   </div>
 
+  <!-- SUBMIT BUTTON -->
   <button
     type="submit"
-    [disabled]="signUpForm.invalid"
+    [disabled]="signUpForm.invalid || isSubmitting"
     class="w-full cursor-pointer text-white bg-green-darker hover:bg-green font-semibold rounded-lg text-sm px-5 py-2.5 mb-5"
   >
-    S'INSCRIRE
+    {{ isSubmitting ? "Chargement..." : "S'INSCRIRE" }}
   </button>
 </form>

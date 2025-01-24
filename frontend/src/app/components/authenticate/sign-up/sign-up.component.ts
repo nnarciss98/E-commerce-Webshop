@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
@@ -8,6 +7,7 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../shop/services/auth.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'sign-up',
@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 })
 export class SignUpComponent {
   signUpForm: FormGroup;
+  isSubmitting: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +28,11 @@ export class SignUpComponent {
       {
         firstname: ['', [Validators.required, Validators.minLength(3)]],
         lastname: ['', [Validators.required, Validators.minLength(3)]],
+        street: ['', Validators.required],
+        streetNumber: ['', Validators.required],
+        postalCode: ['', Validators.required],
+        city: ['', Validators.required],
+        country: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         password: [
           '',
@@ -37,7 +43,6 @@ export class SignUpComponent {
           ],
         ],
         confirmPassword: ['', Validators.required],
-        birthday: ['', Validators.required],
       },
       {
         validators: this.passwordMatchValidator,
@@ -45,28 +50,35 @@ export class SignUpComponent {
     );
   }
 
-  get confirmPassword() {
-    return this.signUpForm.get('confirmPassword')!;
-  }
-
   get firstname() {
     return this.signUpForm.get('firstname')!;
   }
-
   get lastname() {
-    return this.signUpForm.get('lastname');
+    return this.signUpForm.get('lastname')!;
   }
-
+  get street() {
+    return this.signUpForm.get('street')!;
+  }
+  get streetNumber() {
+    return this.signUpForm.get('streetNumber')!;
+  }
+  get postalCode() {
+    return this.signUpForm.get('postalCode')!;
+  }
+  get city() {
+    return this.signUpForm.get('city')!;
+  }
+  get country() {
+    return this.signUpForm.get('country')!;
+  }
   get email() {
     return this.signUpForm.get('email')!;
   }
-
   get password() {
     return this.signUpForm.get('password')!;
   }
-
-  get birthday() {
-    return this.signUpForm.get('birthday')!;
+  get confirmPassword() {
+    return this.signUpForm.get('confirmPassword')!;
   }
 
   passwordComplexityValidator(control: any) {
@@ -91,27 +103,42 @@ export class SignUpComponent {
 
   onSubmit() {
     if (this.signUpForm.valid) {
-      const { firstname, lastname, email, password, birthday } =
-        this.signUpForm.value;
-      console.log('Sign-Up Successful', {
+      this.isSubmitting = true;
+      const {
         firstname,
         lastname,
         email,
         password,
-        birthday,
-      });
+        street,
+        streetNumber,
+        postalCode,
+        city,
+        country,
+      } = this.signUpForm.value;
 
-      // Call AuthService to register the user
-      this.authService.register(firstname, lastname, email, password).subscribe(
-        (response) => {
-          console.log('Registration successful', response);
-          // After successful registration, navigate to the login page or dashboard
-          this.router.navigate(['/login']);
-        },
-        (error) => {
-          console.error('Registration failed', error);
-        }
-      );
+      this.authService
+        .register(
+          firstname,
+          lastname,
+          email,
+          password,
+          street,
+          streetNumber,
+          postalCode,
+          city,
+          country
+        )
+        .subscribe(
+          (response) => {
+            console.log('Registration successful', response);
+            this.isSubmitting = false;
+            this.router.navigate(['/authenticate']);
+          },
+          (error) => {
+            console.error('Registration failed', error);
+            this.isSubmitting = false;
+          }
+        );
     } else {
       console.log('Form is invalid');
     }

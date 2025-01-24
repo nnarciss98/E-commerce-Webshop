@@ -6,31 +6,52 @@ import { Category } from '../types'; // Ensure you have this file with the corre
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-navbar',
-    imports: [RouterModule, CommonModule, TranslateModule],
-    templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.css']
+  selector: 'app-navbar',
+  imports: [RouterModule, CommonModule, TranslateModule],
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  isNavbarOpen = false;
-  categories: Category[] = []; // Hold the fetched categories here
+  isNavbarOpen = false; // For navbar responsiveness
+  isDropdownOpen = false; // For language dropdown visibility
+  isMenuOpen = false; // To handle the menu toggle in your template
+  categories: Category[] = []; // Fetched categories
+  selectedLanguage: string = 'fr'; // Default language
 
-  constructor(private categoryService: CategoryService, private translate: TranslateService) {}
+  constructor(
+    private categoryService: CategoryService,
+    private translate: TranslateService
+  ) {}
 
-  useLanguage(language: string): void {
-    this.translate.use(language);
+  /**
+   * Toggles the navbar for mobile view
+   */
+  toggleNavbar(): void {
+    this.isNavbarOpen = !this.isNavbarOpen;
   }
 
+  /**
+   * Toggles the dropdown for language selection
+   */
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  /**
+   * Changes the language dynamically
+   * @param language - The language code
+   */
+  useLanguage(language: string): void {
+    this.translate.use(language);
+    this.selectedLanguage = language;
+  }
+
+  /**
+   * Fetches categories from the service on initialization
+   */
   ngOnInit(): void {
-    // Fetch all categories when the component initializes
     this.categoryService.getAllCategories().subscribe((data) => {
       this.categories = data;
     });
   }
-
-  toggleNavbar() {
-    this.isNavbarOpen = !this.isNavbarOpen;
-  }
 }
-
-//  [ngClass]="{ hidden: !isNavbarOpen, flex: isNavbarOpen }"
