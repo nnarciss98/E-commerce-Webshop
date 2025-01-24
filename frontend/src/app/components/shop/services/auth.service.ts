@@ -6,53 +6,61 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  // Hardcode the API URL here
-  private apiUrlAuth = 'http://localhost:8080/api/v1/auth/authenticate'; // URL for authentication/login
-  private apiUrlRegister = 'http://localhost:8080/api/v1/auth/register'; // URL for registration
+  private apiUrlAuth = 'http://localhost:8080/api/v1/auth/authenticate';
+  private apiUrlRegister = 'http://localhost:8080/api/v1/auth/register';
 
   constructor(private http: HttpClient) {}
 
-  // Register method to send a POST request to the backend
   register(
-    lastname: string,
     firstname: string,
+    lastname: string,
     email: string,
-    password: string
+    password: string,
+    street: string,
+    streetNumber: number,
+    postalCode: number,
+    city: string,
+    country: string
   ): Observable<any> {
     return this.http.post<any>(this.apiUrlRegister, {
-      lastname,
       firstname,
+      lastname,
       email,
       password,
+      street,
+      streetNumber,
+      postalCode,
+      city,
+      country,
     });
   }
 
-  // Login method (assuming it returns a JWT)
+  // Login method to authenticate the user and return JWT
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiUrlAuth, { email, password });
   }
 
-  // Save JWT token to localStorage
+  // Save JWT token to localStorage for authentication
   saveToken(token: string): void {
     localStorage.setItem('authToken', token);
   }
 
-  // Get the JWT token from localStorage
+  // Retrieve the JWT token from localStorage
   getToken(): string | null {
     return localStorage.getItem('authToken');
   }
 
-  // Remove JWT token from localStorage (logout functionality)
+  // Remove JWT token from localStorage (for logging out)
   removeToken(): void {
     localStorage.removeItem('authToken');
   }
 
-  // Check if user is logged in (token exists)
+  // Check if the user is authenticated by checking the presence of a token
   isAuthenticated(): boolean {
     return this.getToken() !== null;
   }
 
-  // Add JWT token to HTTP headers for authenticated requests
+  // Get the JWT token from localStorage and add it to HTTP headers for authenticated requests
   getAuthHeaders() {
     const token = this.getToken();
     let headers = new HttpHeaders();
