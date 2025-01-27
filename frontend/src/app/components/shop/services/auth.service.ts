@@ -47,7 +47,10 @@ export class AuthService {
 
   // Retrieve the JWT token from localStorage
   getToken(): string | null {
-    return localStorage.getItem('authToken');
+    if (typeof window !== 'undefined' && localStorage) {
+      return localStorage.getItem('authToken');
+    }
+    return null;
   }
 
   // Remove JWT token from localStorage (for logging out)
@@ -68,5 +71,19 @@ export class AuthService {
       headers = headers.set('Authorization', `Bearer ${token}`);
     }
     return headers;
+  }
+
+  getUserEmail(): string | null {
+    const token = this.getToken(); // Récupérer le token JWT
+    if (token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1])); // Décoder le payload du JWT
+        return payload.email || null; // Retourner l'email s'il existe dans le token
+      } catch (e) {
+        console.error('Error decoding token:', e);
+        return null;
+      }
+    }
+    return null; // Pas de token ou erreur
   }
 }
