@@ -9,6 +9,7 @@ import { ShopProductDetailPageComponent } from './components/shop/shop-product-d
 import { AuthenticateComponent } from './components/authenticate/authenticate.component';
 import { CategoryPageComponentComponent } from './components/shop/category-page-component/category-page-component.component';
 import { MyAccountComponent } from './components/my-account/my-account.component';
+import { CartComponent } from './components/cart/cart.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,4 +22,5 @@ export const routes: Routes = [
   { path: 'authenticate', component: AuthenticateComponent },
   { path: 'category/:categoryId', component: CategoryPageComponentComponent },
   { path: 'my-account', component: MyAccountComponent },
+  { path: 'cart', component: CartComponent },
 ];

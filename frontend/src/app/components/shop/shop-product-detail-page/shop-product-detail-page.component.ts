@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { ReviewService } from '../services/review.service';
+import { CartService } from '../services/cart.service';
+import { AuthService } from '../services/auth.service';
 import { Product } from '../../types';
 import { CommonModule } from '@angular/common';
 import { RatingComponent } from '../../rating/rating.component';
@@ -9,25 +11,39 @@ import { QuantitySelectorComponent } from '../quantity-selector/quantity-selecto
 
 @Component({
   selector: 'app-shop-product-detail-page',
-  standalone: true, // Ensures this is a standalone component
+  standalone: true,
   imports: [CommonModule, RatingComponent, QuantitySelectorComponent],
   templateUrl: './shop-product-detail-page.component.html',
   styleUrls: ['./shop-product-detail-page.component.css'],
 })
 export class ShopProductDetailPageComponent implements OnInit {
-  productId: string | null = null; // Explicit null initialization
-  product: Product | undefined; // Product object
-  currentImageIndex: number = 0; // Index for image carousel
-  initialQuantity = 1; // Initial quantity for quantity selector
+  productId: string | null = null;
+  product: Product | undefined;
+  currentImageIndex: number = 0;
+  initialQuantity = 1;
+  userEmail: string | null = null;
+  isAuthenticated: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
     private reviewService: ReviewService,
+    private cartService: CartService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
+    // Fetch the logged-in user's email directly
+    const email = this.authService.getUserEmail();
+    if (email) {
+      this.userEmail = email;
+      this.isAuthenticated = true;
+    } else {
+      console.warn('User is not authenticated or details are unavailable.');
+      this.isAuthenticated = false;
+    }
+
     // Fetch product ID from the route
     this.productId = this.route.snapshot.paramMap.get('id');
 
@@ -49,14 +65,10 @@ export class ShopProductDetailPageComponent implements OnInit {
             ];
           }
         },
-        error: (err) => {
+        error: (err: any) => {
           console.error('Error fetching product:', err);
-          this.router.navigate(['/shop']); // Redirect to shop in case of an error
         },
       });
-    } else {
-      // Redirect to the shop if no product ID is found
-      this.router.navigate(['/shop']);
     }
   }
 
@@ -72,6 +84,32 @@ export class ShopProductDetailPageComponent implements OnInit {
   }
 
   /**
+   * Add the current product to the cart.
+   */
+  addToCart(): void {
+    if (this.product && this.product.id && this.isAuthenticated) {
+      const quantity = this.initialQuantity;
+
+      this.cartService
+        .addItemToCart(this.userEmail!, this.product.id, quantity)
+        .subscribe({
+          next: (updatedCart) => {
+            console.log('Product added to cart:', updatedCart);
+            alert('Product successfully added to the cart!');
+          },
+          error: (err: any) => {
+            console.error('Error adding product to cart:', err);
+            alert(
+              'Failed to add the product to the cart. Please try again later.'
+            );
+          },
+        });
+    } else {
+      alert('You must be logged in to add items to the cart.');
+    }
+  }
+
+  /**
    * Navigate to the next image in the product's image carousel.
    */
   nextImage(): void {
@@ -83,13 +121,13 @@ export class ShopProductDetailPageComponent implements OnInit {
 
   /**
    * Handle rating change and save it using ReviewService.
-   * @param newRating The new rating selected by the user.
+   * @param newRating
    */
   onRatingChange(newRating: number): void {
-    if (this.product) {
+    if (this.product && this.isAuthenticated) {
       const review = {
         productId: this.product.id,
-        userEmail: 'user@example.com', // Replace with the actual logged-in user's email
+        userEmail: this.userEmail!,
         rating: newRating,
       };
 
@@ -97,18 +135,21 @@ export class ShopProductDetailPageComponent implements OnInit {
         next: (response) => {
           console.log('Review submitted successfully:', response);
         },
-        error: (err) => {
+        error: (err: any) => {
           console.error('Error submitting review:', err);
         },
       });
+    } else {
+      alert('You must be logged in to submit a review.');
     }
   }
 
   /**
    * Handle quantity change from the QuantitySelectorComponent.
-   * @param newQuantity The new quantity selected by the user.
+   * @param newQuantity
    */
   onQuantityChange(newQuantity: number): void {
     console.log('New Quantity:', newQuantity);
+    this.initialQuantity = newQuantity; // Update the initial quantity with the selected value
   }
 }
