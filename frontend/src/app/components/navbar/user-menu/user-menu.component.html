@@ -27,29 +27,22 @@
     <li>
       <a
         routerLink="/authenticate"
-        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        >Se connecter</a
+        class="block text-base px-4 py-2 hover:bg-gray-100"
+        >{{ "navbar.user-menu.connexion" | translate }}</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/my-account"
+        class="block text-base px-4 py-2 hover:bg-gray-100"
+        >{{ "navbar.user-menu.my-account" | translate }}</a
       >
     </li>
     <li>
       <a
         routerLink="/"
-        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        >Settings</a
-      >
-    </li>
-    <li>
-      <a
-        routerLink="/"
-        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        >Devenir client</a
-      >
-    </li>
-    <li>
-      <a
-        routerLink="/"
-        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-        >Sign out</a
+        class="block px-4 py-2 text-base text-secondary hover:bg-gray-100"
+        >{{ "navbar.user-menu.sign-out" | translate }}</a
       >
     </li>
   </ul>

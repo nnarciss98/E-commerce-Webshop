@@ -11,5 +11,12 @@
       "title": "Votre partenaire en électricité, pour des solutions fiables et durables",
       "paragraph": "Nous proposons des services électriques adaptés à vos besoins, que ce soit pour des projets résidentiels, commerciaux ou industriels"
     }
+  },
+  "navbar": {
+    "user-menu": {
+      "connexion": "Se connecter",
+      "my-account": "Mon compte",
+      "sign-out": "Se déconnecter"
+    }
   }
 }
