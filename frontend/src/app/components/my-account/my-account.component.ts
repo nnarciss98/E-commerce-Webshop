@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-account',
-  standalone: true, // Ce composant est standalone
-  imports: [ReactiveFormsModule], // Ajoutez ReactiveFormsModule ici
+  standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './my-account.component.html',
   styleUrls: ['./my-account.component.css'],
 })
@@ -53,7 +53,7 @@ export class MyAccountComponent {
             console.log('Données mises à jour avec succès', response);
             this.isSubmitting = false;
             // rediriger l'utilisateur ou afficher un message de succès
-            this.router.navigate(['/profile']); // Exemple de redirection
+            this.router.navigate(['/']);
           },
           (error) => {
             console.error('Échec de la mise à jour des données', error);
