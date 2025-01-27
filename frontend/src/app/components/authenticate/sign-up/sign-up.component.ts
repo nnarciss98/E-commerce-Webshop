@@ -50,6 +50,7 @@ export class SignUpComponent {
     );
   }
 
+  // Getters for easier template access
   get firstname() {
     return this.signUpForm.get('firstname')!;
   }
@@ -81,6 +82,7 @@ export class SignUpComponent {
     return this.signUpForm.get('confirmPassword')!;
   }
 
+  // Custom Validators
   passwordComplexityValidator(control: any) {
     const value = control.value || '';
     const hasUpperCase = /[A-Z]/.test(value);
@@ -101,9 +103,11 @@ export class SignUpComponent {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
 
+  // Submit form and register user
   onSubmit() {
     if (this.signUpForm.valid) {
       this.isSubmitting = true;
+
       const {
         firstname,
         lastname,
@@ -116,6 +120,7 @@ export class SignUpComponent {
         country,
       } = this.signUpForm.value;
 
+      // Call AuthService to register the user
       this.authService
         .register(
           firstname,
@@ -132,11 +137,16 @@ export class SignUpComponent {
           (response) => {
             console.log('Registration successful', response);
             this.isSubmitting = false;
+
+            // Redirect to another page (e.g., login page)
             this.router.navigate(['/authenticate']);
           },
           (error) => {
             console.error('Registration failed', error);
             this.isSubmitting = false;
+
+            // Optional: Show an error message to the user
+            alert('Registration failed. Please try again.');
           }
         );
     } else {
