@@ -34,8 +34,8 @@ public class User implements UserDetails {
     private String lastName;
     @Column(nullable = false)
     private String password;
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true) // One-to-Many relationship
-    private List<Address> addresses = new ArrayList<>();
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Address addresses;
     @OneToMany
     private List<Order> orders = new ArrayList<>();
     @OneToOne

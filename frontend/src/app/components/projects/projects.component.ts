@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'app-projects',
-    imports: [CommonModule],
+    imports: [CommonModule, TranslateModule],
     templateUrl: './projects.component.html',
     styleUrls: ['./projects.component.css']
 })

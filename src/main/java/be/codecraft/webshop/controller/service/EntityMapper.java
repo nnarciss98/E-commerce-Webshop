@@ -229,8 +229,8 @@ public class EntityMapper {
                 .id(address.getId())
                 .userEmail(address.getUser() != null ? address.getUser().getEmail() : null)
                 .street(details != null ? details.getStreet() : null)
+                .streetNumber(details != null ? details.getStreetNumber() : null)
                 .city(details != null ? details.getCity() : null)
-                .state(details != null ? details.getState() : null)
                 .postalCode(details != null ? details.getPostalCode() : null)
                 .country(details != null ? details.getCountry() : null)
                 .build();
@@ -243,8 +243,8 @@ public class EntityMapper {
 
         AddressDetails addressDetails = new AddressDetails(
                 addressDTO.getStreet(),
+                addressDTO.getStreetNumber(),
                 addressDTO.getCity(),
-                addressDTO.getState(),
                 addressDTO.getPostalCode(),
                 addressDTO.getCountry()
         );

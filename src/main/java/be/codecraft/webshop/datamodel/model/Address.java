@@ -16,7 +16,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @ManyToOne // Showcase many-to-one relationship
+    @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
