@@ -74,7 +74,7 @@ export class AuthService {
   }
 
   getUserEmail(): string | null {
-    const token = this.getToken(); // Récupérer le token JWT
+    const token = this.getToken();
     if (token) {
       try {
         const payload = JSON.parse(atob(token.split('.')[1])); // Décoder le payload du JWT
