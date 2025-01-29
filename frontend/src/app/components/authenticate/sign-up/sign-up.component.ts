@@ -137,15 +137,11 @@ export class SignUpComponent {
           (response) => {
             console.log('Registration successful', response);
             this.isSubmitting = false;
-
-            // Redirect to another page (e.g., login page)
-            this.router.navigate(['/authenticate']);
+            this.router.navigate(['/']);
           },
           (error) => {
             console.error('Registration failed', error);
             this.isSubmitting = false;
-
-            // Optional: Show an error message to the user
             alert('Registration failed. Please try again.');
           }
         );

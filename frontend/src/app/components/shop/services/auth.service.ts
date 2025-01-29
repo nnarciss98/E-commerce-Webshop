@@ -35,17 +35,14 @@ export class AuthService {
     });
   }
 
-  // Login method to authenticate the user and return JWT
   login(email: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiUrlAuth, { email, password });
   }
 
-  // Save JWT token to localStorage for authentication
   saveToken(token: string): void {
     localStorage.setItem('authToken', token);
   }
 
-  // Retrieve the JWT token from localStorage
   getToken(): string | null {
     if (typeof window !== 'undefined' && localStorage) {
       return localStorage.getItem('authToken');
@@ -53,17 +50,34 @@ export class AuthService {
     return null;
   }
 
-  // Remove JWT token from localStorage (for logging out)
   removeToken(): void {
     localStorage.removeItem('authToken');
   }
 
-  // Check if the user is authenticated by checking the presence of a token
-  isAuthenticated(): boolean {
-    return this.getToken() !== null;
+  // check if the user is authenticated and the JWT is valid
+  isUserAuthenticated(): boolean {
+    const token = this.getToken();
+    if (!token) {
+      return false;
+    }
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+
+      // Check if the token has expired
+      const expirationDate = payload.exp * 1000;
+      if (Date.now() > expirationDate) {
+        return false; // Token expired, not authenticated
+      }
+
+      return true; // Token is valid, user is authenticated
+    } catch (e) {
+      console.error('Error decoding token:', e);
+      return false;
+    }
   }
 
-  // Get the JWT token from localStorage and add it to HTTP headers for authenticated requests
+  // add JWT to HTTP request headers
   getAuthHeaders() {
     const token = this.getToken();
     let headers = new HttpHeaders();
@@ -77,13 +91,13 @@ export class AuthService {
     const token = this.getToken();
     if (token) {
       try {
-        const payload = JSON.parse(atob(token.split('.')[1])); // Décoder le payload du JWT
-        return payload.email || null; // Retourner l'email s'il existe dans le token
+        const payload = JSON.parse(atob(token.split('.')[1])); // Decode JWT payload
+        return payload.email || null;
       } catch (e) {
         console.error('Error decoding token:', e);
         return null;
       }
     }
-    return null; // Pas de token ou erreur
+    return null;
   }
 }
