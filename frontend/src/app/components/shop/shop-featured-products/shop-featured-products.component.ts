@@ -4,10 +4,11 @@ import { RouterModule } from '@angular/router';
 import { Product } from '../../types';
 import { ProductService } from '../services/product.service';
 import { ReviewService } from '../services/review.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
     selector: 'shop-featured-products',
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule, RouterModule, TranslateModule],
     templateUrl: './shop-featured-products.component.html',
     styleUrl: './shop-featured-products.component.css'
 })

@@ -50,7 +50,6 @@ public class AddressService {
         AddressDetails addressDetails = address.getAddressDetails();
         addressDetails.setStreet(addressDTO.getStreet());
         addressDetails.setCity(addressDTO.getCity());
-        addressDetails.setState(addressDTO.getState());
         addressDetails.setPostalCode(addressDTO.getPostalCode());
         addressDetails.setCountry(addressDTO.getCountry());
 

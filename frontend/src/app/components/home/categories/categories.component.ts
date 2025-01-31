@@ -5,11 +5,12 @@ import { Product } from '../../types';
 
 // Import Swiper styles
 import 'swiper/swiper-bundle.css';
+import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../shop/services/auth.service';
 
 @Component({
     selector: 'app-categories',
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule, RouterModule, TranslateModule],
     templateUrl: './categories.component.html',
     styleUrls: ['./categories.component.css']
 })

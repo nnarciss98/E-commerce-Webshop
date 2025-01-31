@@ -13,9 +13,9 @@ public class AddressDetails {
     @Column(nullable = false)
     private String street;
     @Column(nullable = false)
-    private String city;
+    private String streetNumber;
     @Column(nullable = false)
-    private String state;
+    private String city;
     @Column(nullable = false)
     private String postalCode;
     @Column(nullable = false)
