@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -35,8 +35,20 @@ export class AuthService {
     });
   }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiUrlAuth, { email, password });
+  login(email: string, password: string): Observable<string> {
+    console.log("Start login request...");
+    return this.http.post<{ token: string }>(this.apiUrlAuth, { email, password }).pipe(
+      map(response => {
+        if (response && response.token) {
+          const token = response.token;
+          console.log("Token received:", token);
+          localStorage.setItem('authToken', token);
+          return token;
+        } else {
+          throw new Error('No token received');
+        }
+      })
+    );
   }
 
   saveToken(token: string): void {
@@ -44,7 +56,8 @@ export class AuthService {
   }
 
   getToken(): string | null {
-    if (typeof window !== 'undefined' && localStorage) {
+    // Check if we are in the browser environment (ensure `window` is available)
+    if (typeof window !== 'undefined' && window.localStorage) {
       return localStorage.getItem('authToken');
     }
     return null;
@@ -57,6 +70,8 @@ export class AuthService {
   // check if the user is authenticated and the JWT is valid
   isUserAuthenticated(): boolean {
     const token = this.getToken();
+    console.log("Is user authenticated: " + token)
+    console.log(token)
     if (!token) {
       return false;
     }

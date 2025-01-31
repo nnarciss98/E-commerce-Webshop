@@ -50,7 +50,6 @@ export class MyAccountComponent {
         .put('http://localhost:8080/api/v1/auth/update', formValues)
         .subscribe(
           (response) => {
-            console.log('Données mises à jour avec succès', response);
             this.isSubmitting = false;
             // rediriger l'utilisateur ou afficher un message de succès
             this.router.navigate(['/']);

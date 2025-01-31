@@ -54,7 +54,6 @@ export class ContactComponent {
       )
       .subscribe({
         next: (response) => {
-          console.log('Message sent!', response);
           // Show success modal
           const successModal = document.getElementById('successModal');
           if (successModal) {

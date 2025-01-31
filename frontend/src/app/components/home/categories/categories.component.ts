@@ -5,6 +5,7 @@ import { Product } from '../../types';
 
 // Import Swiper styles
 import 'swiper/swiper-bundle.css';
+import { AuthService } from '../../shop/services/auth.service';
 
 @Component({
     selector: 'app-categories',
@@ -102,4 +103,10 @@ export class CategoriesComponent {
       categoryId: '1',
     },
   ];
+
+  constructor(private authService: AuthService){}
+
+  isUserAuth(): boolean{
+    return this.authService.isUserAuthenticated()
+  }
 }
