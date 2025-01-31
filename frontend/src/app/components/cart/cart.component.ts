@@ -1,29 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../shop/services/cart.service';
-import { Cart, CartItems } from '../../components/types'; // Import the Cart and CartItems types
-import { provideHttpClient } from '@angular/common/http';
+import { Cart, CartItems } from '../../components/types';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../shop/services/auth.service';
 
 @Component({
   selector: 'app-cart',
-  standalone: true, // Make the component standalone
-  imports: [CommonModule], // Import necessary modules
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
   cart: Cart | null = null;
   total: number = 0;
-  userEmail: string = 'user@example.com'; // This should be dynamic or passed as an input from parent component
-
-  constructor(private cartService: CartService) {}
+  userEmail: string | null = null;
+  constructor(
+    private cartService: CartService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.userEmail = this.authService.getUserEmail();
+
+    if (!this.userEmail) {
+      console.warn('User is not logged in. Redirecting to home...');
+      return;
+    }
+
     this.loadCart();
   }
 
-  // Fetch cart by user email
+  // Fetch the user's cart
   loadCart(): void {
+    if (!this.userEmail) return;
+
     this.cartService.getCartByUserEmail(this.userEmail).subscribe({
       next: (cart) => {
         this.cart = cart;
@@ -31,18 +42,20 @@ export class CartComponent implements OnInit {
       },
       error: (err) => {
         console.error('Error loading cart:', err);
+        this.cart = null; // Reset cart on failure
       },
     });
   }
 
-  // Update quantity of an item in the cart
+  // Update quantity of an item
   updateQuantity(item: CartItems, newQuantity: number): void {
-    if (newQuantity <= 0) return; // Prevent negative or zero quantities
+    if (!this.userEmail || newQuantity <= 0) return;
+
     this.cartService
       .addItemToCart(this.userEmail, item.productId, newQuantity)
       .subscribe({
         next: () => {
-          this.loadCart(); // Reload the cart after updating quantity
+          this.loadCart();
         },
         error: (err) => {
           console.error('Error updating quantity:', err);
@@ -52,11 +65,13 @@ export class CartComponent implements OnInit {
 
   // Remove an item from the cart
   removeItem(item: CartItems): void {
+    if (!this.userEmail) return;
+
     this.cartService
       .removeItemFromCart(this.userEmail, item.productId)
       .subscribe({
         next: () => {
-          this.loadCart(); // Reload the cart after removing the item
+          this.loadCart();
         },
         error: (err) => {
           console.error('Error removing item:', err);
@@ -64,13 +79,12 @@ export class CartComponent implements OnInit {
       });
   }
 
-  // Calculate the total price of the items in the cart
+  // Calculate total price
   calculateTotal(): void {
-    if (this.cart && this.cart.items) {
-      this.total = this.cart.items.reduce(
+    this.total =
+      this.cart?.items?.reduce(
         (acc, item) => acc + item.price * item.quantity,
         0
-      );
-    }
+      ) || 0;
   }
 }

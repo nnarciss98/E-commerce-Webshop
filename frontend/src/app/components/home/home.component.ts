@@ -7,16 +7,16 @@ import { ShopMainPageComponent } from '../shop/shop-main-page/shop-main-page.com
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-home',
-    imports: [
-        CommonModule,
-        CategoriesComponent,
-        PartenairesComponent,
-        ShopMainPageComponent,
-        RouterModule,
-        TranslateModule
-    ], // <-- Ensure RouterModule is in the imports array
-    templateUrl: './home.component.html',
-    styleUrls: ['./home.component.css']
+  selector: 'app-home',
+  imports: [
+    CommonModule,
+    CategoriesComponent,
+    PartenairesComponent,
+    ShopMainPageComponent,
+    RouterModule,
+    TranslateModule,
+  ],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent {}

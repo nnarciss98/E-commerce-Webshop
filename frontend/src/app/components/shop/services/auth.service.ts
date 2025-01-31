@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -35,35 +35,64 @@ export class AuthService {
     });
   }
 
-  // Login method to authenticate the user and return JWT
-  login(email: string, password: string): Observable<any> {
-    return this.http.post<any>(this.apiUrlAuth, { email, password });
+  login(email: string, password: string): Observable<string> {
+    console.log("Start login request...");
+    return this.http.post<{ token: string }>(this.apiUrlAuth, { email, password }).pipe(
+      map(response => {
+        if (response && response.token) {
+          const token = response.token;
+          console.log("Token received:", token);
+          localStorage.setItem('authToken', token);
+          return token;
+        } else {
+          throw new Error('No token received');
+        }
+      })
+    );
   }
 
-  // Save JWT token to localStorage for authentication
   saveToken(token: string): void {
     localStorage.setItem('authToken', token);
   }
 
-  // Retrieve the JWT token from localStorage
   getToken(): string | null {
-    if (typeof window !== 'undefined' && localStorage) {
+    // Check if we are in the browser environment (ensure `window` is available)
+    if (typeof window !== 'undefined' && window.localStorage) {
       return localStorage.getItem('authToken');
     }
     return null;
   }
 
-  // Remove JWT token from localStorage (for logging out)
   removeToken(): void {
     localStorage.removeItem('authToken');
   }
 
-  // Check if the user is authenticated by checking the presence of a token
-  isAuthenticated(): boolean {
-    return this.getToken() !== null;
+  // check if the user is authenticated and the JWT is valid
+  isUserAuthenticated(): boolean {
+    const token = this.getToken();
+    console.log("Is user authenticated: " + token)
+    console.log(token)
+    if (!token) {
+      return false;
+    }
+
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+
+      // Check if the token has expired
+      const expirationDate = payload.exp * 1000;
+      if (Date.now() > expirationDate) {
+        return false; // Token expired, not authenticated
+      }
+
+      return true; // Token is valid, user is authenticated
+    } catch (e) {
+      console.error('Error decoding token:', e);
+      return false;
+    }
   }
 
-  // Get the JWT token from localStorage and add it to HTTP headers for authenticated requests
+  // add JWT to HTTP request headers
   getAuthHeaders() {
     const token = this.getToken();
     let headers = new HttpHeaders();
@@ -74,16 +103,16 @@ export class AuthService {
   }
 
   getUserEmail(): string | null {
-    const token = this.getToken(); // Récupérer le token JWT
+    const token = this.getToken();
     if (token) {
       try {
-        const payload = JSON.parse(atob(token.split('.')[1])); // Décoder le payload du JWT
-        return payload.email || null; // Retourner l'email s'il existe dans le token
+        const payload = JSON.parse(atob(token.split('.')[1])); // Decode JWT payload
+        return payload.email || null;
       } catch (e) {
         console.error('Error decoding token:', e);
         return null;
       }
     }
-    return null; // Pas de token ou erreur
+    return null;
   }
 }

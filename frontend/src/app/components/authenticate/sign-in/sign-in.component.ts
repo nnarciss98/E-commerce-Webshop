@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuthService } from '../../shop/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'sign-in',
@@ -12,7 +14,7 @@ export class SignInComponent {
 
   signInForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.signInForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -30,16 +32,21 @@ export class SignInComponent {
   onSubmit() {
     if (this.signInForm.valid) {
       const { email, password } = this.signInForm.value;
-      console.log('Sign-In Successful', { email, password });
-
-      // Call authentication service here
-      // Example:
-      // this.authService.login(email, password).subscribe(
-      //   (response) => console.log('Logged in successfully', response),
-      //   (error) => console.error('Login failed', error)
-      // );
+  
+      this.authService.login(email, password).subscribe({
+        next: token => {
+          console.log('Login successful, token received:', token);
+          this.router.navigate(['/']); 
+          // You can navigate to another page, store the token, or update UI here
+        },
+        error: err => {
+          console.error('Login failed:', err);
+        }
+      });
+  
     } else {
       console.log('Form is invalid');
     }
   }
+  
 }
